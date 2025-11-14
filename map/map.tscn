@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://bl3losxm3rp87"]
+
+[ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_a0dt8"]
+[ext_resource type="Texture2D" uid="uid://tf64kwmlehbi" path="res://map/textures/foundation/asphalt_road_3.jpg" id="2_4hjbm"]
+[ext_resource type="PackedScene" uid="uid://d12fg5cw2ptk3" path="res://player/player.tscn" id="3_4hjbm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4hjbm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_lgq1i"]
+sky_material = SubResource("ProceduralSkyMaterial_4hjbm")
+
+[sub_resource type="Environment" id="Environment_kffv2"]
+background_mode = 2
+sky = SubResource("Sky_lgq1i")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgq1i"]
+albedo_texture = ExtResource("1_a0dt8")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kffv2"]
+material = SubResource("StandardMaterial3D_lgq1i")
+size = Vector2(1000, 1000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lgq1i"]
+data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500, -500, 0, -500, 500, 0, -500)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7lyie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jdw0"]
+albedo_texture = ExtResource("2_4hjbm")
+uv1_scale = Vector3(0.38, 0.38, 0.38)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kxmgb"]
+size = Vector3(8.635, 1, 1000)
+
+[node name="Map" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kffv2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_kffv2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lgq1i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0416118, 0)
+mesh = SubResource("CapsuleMesh_7lyie")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43281007, 0)
+material_override = SubResource("StandardMaterial3D_5jdw0")
+mesh = SubResource("BoxMesh_kxmgb")
+
+[node name="Player" parent="." instance=ExtResource("3_4hjbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.851625, 0)
+cam_speed = 0.005
