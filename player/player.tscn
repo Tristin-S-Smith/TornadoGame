@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+height = 2.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_oul6g"]
 size = Vector3(0.1, 0.1, 1)
@@ -19,6 +20,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_oul6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27971947, 0)
 shape = SubResource("CapsuleShape3D_rkbax")
 
 [node name="Cam" type="Node3D" parent="."]
