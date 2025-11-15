@@ -14,8 +14,6 @@ size = Vector3(0.1, 0.1, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oul6g")
-cam_speed = 0.001
-cam_rotation_amount = 0.075
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

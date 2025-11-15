@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl3losxm3rp87"]
+[gd_scene load_steps=18 format=3 uid="uid://bl3losxm3rp87"]
 
 [ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_a0dt8"]
 [ext_resource type="Shader" uid="uid://cfvtm02i3vk48" path="res://map/sky.gdshader" id="1_kffv2"]
@@ -62,7 +62,10 @@ uv1_scale = Vector3(0.38, 0.38, 0.38)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_kxmgb"]
-size = Vector3(8.635, 1, 1000)
+size = Vector3(10, 1, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kffv2"]
+size = Vector3(100, 100, 100)
 
 [node name="Map" type="Node3D"]
 
@@ -93,7 +96,10 @@ mesh = SubResource("BoxMesh_kxmgb")
 
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.851625, 0)
-cam_speed = 0.005
 
 [node name="Car" parent="." instance=ExtResource("4_lgq1i")]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 0, 2.8820696, -4.522393)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0, -336)
+mesh = SubResource("BoxMesh_kffv2")

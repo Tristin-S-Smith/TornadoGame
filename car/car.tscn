@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfwldmlsvc0ma"]
+[gd_scene load_steps=24 format=3 uid="uid://cfwldmlsvc0ma"]
 
 [ext_resource type="PackedScene" uid="uid://wgww2dsp12ra" path="res://car/carBase.glb" id="1_dxy33"]
 [ext_resource type="Script" uid="uid://c0mvjsfcrdde0" path="res://car/car.gd" id="1_jpe8o"]
@@ -7,10 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://do54aknnqhj5e" path="res://car/driverWindow.glb" id="5_coc8s"]
 [ext_resource type="AudioStream" uid="uid://blk8o5pg81qow" path="res://car/sounds/engineLoop.wav" id="5_h3fet"]
 [ext_resource type="AudioStream" uid="uid://cqunqlmwvach1" path="res://car/sounds/open-car-door-372469.mp3" id="6_xhmyn"]
+[ext_resource type="AudioStream" uid="uid://cb8q2xtjs4n1s" path="res://car/sounds/parkingBrake.wav" id="7_0crgv"]
 [ext_resource type="AudioStream" uid="uid://bko1tacdiurxi" path="res://car/sounds/car-door-close-6929.mp3" id="7_vl2bd"]
 [ext_resource type="PackedScene" uid="uid://dqfjuo6r2whv0" path="res://car/steeringWheel.glb" id="8_vl2bd"]
 [ext_resource type="PackedScene" uid="uid://dwhuyawwitvis" path="res://car/windshield.glb" id="9_72ido"]
 [ext_resource type="PackedScene" uid="uid://bt5nqcxcovd3d" path="res://car/windowPassenger.glb" id="11_wdy7j"]
+[ext_resource type="Script" uid="uid://clhycqfju5trj" path="res://car/ui.gd" id="12_4ffqf"]
+[ext_resource type="Texture2D" uid="uid://d3618binl64w0" path="res://car/ui/speedometerEmpty.png" id="12_u1hgu"]
+[ext_resource type="Texture2D" uid="uid://blqpjtk0t48nb" path="res://car/ui/speedometerFull.png" id="13_4ffqf"]
+[ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="15_a5fo2"]
+[ext_resource type="Texture2D" uid="uid://jnnvc8y1wf8l" path="res://car/ui/gearTick.png" id="16_xfen4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxy33"]
 size = Vector3(6.5948486, 1.2338867, 2.379486)
@@ -127,6 +133,126 @@ tracks/7/keys = {
 "values": [0.0, 0.2]
 }
 
+[sub_resource type="Animation" id="Animation_wdy7j"]
+resource_name = "ExitCar"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carBase/CamHold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.70000005, 0.76666665, 0.93333334, 1.1),
+"transitions": PackedFloat32Array(1, 1, 2, 1, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0.065, 1.08, -0.53699994), Vector3(0.065, 0.975, -0.642), Vector3(0.065, 0.975, -0.642), Vector3(-0.66471606, 0.975, -1.605696), Vector3(-0.66471606, 0.975, -1.605696), Vector3(-0.9487861, 0.975, -1.7670021), Vector3(-0.92594606, 0.975, -2.0896144)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carBase/CamHold:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.70000005, 0.7666667, 1.1),
+"transitions": PackedFloat32Array(1, 1, 2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0), Vector3(-0.33161256, 0.06981317, 0.07853982), Vector3(-0.33161256, 0.06981317, 0.07853982), Vector3(-0.33161253, -0.6180907, 0.07853981), Vector3(-0.33161253, -0.6180907, 0.07853981), Vector3(0, -2.1814172, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorHinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.6, 1),
+"transitions": PackedFloat32Array(1, 2, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.65449846, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("windshield/Cube_003:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.23333335),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.2, 0.2, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("windowPassenger/Cube_009:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.2, 0.2, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DoorHinge/driverWindow/Cube_008:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.805658, 0.85113883),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.2, 0.2, 0.0]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimSounds")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.14898129,
+"stream": ExtResource("6_xhmyn")
+}],
+"times": PackedFloat32Array(0.114553645)
+}
+tracks/6/use_blend = true
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimSounds2")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_vl2bd")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/7/use_blend = true
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.26666668),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"door_open"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_bkrhx"]
 length = 0.001
 tracks/0/type = "value"
@@ -205,6 +331,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkrhx"]
 _data = {
 &"EnterCar": SubResource("Animation_h3fet"),
+&"ExitCar": SubResource("Animation_wdy7j"),
 &"RESET": SubResource("Animation_bkrhx")
 }
 
@@ -267,7 +394,7 @@ shape = SubResource("BoxShape3D_dxy33")
 [node name="carBase" parent="." instance=ExtResource("1_dxy33")]
 
 [node name="CamHold" type="Node3D" parent="carBase"]
-transform = Transform3D(-0.99999994, 0, -8.742278e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0.05, 1, -2.002)
+transform = Transform3D(-0.9999998, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.742276e-08, 0, -1.0000001, 0.05, 1, -2.002)
 
 [node name="Camera3D" type="Camera3D" parent="carBase/CamHold"]
 far = 150.0
@@ -333,6 +460,10 @@ max_db = 0.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
 
+[node name="CarPark" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0crgv")
+volume_db = -2.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_bkrhx")
@@ -343,7 +474,7 @@ libraries = {
 [node name="AnimSounds2" type="AudioStreamPlayer" parent="."]
 
 [node name="steeringWheel" parent="." instance=ExtResource("8_vl2bd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6232816, 0.66468877, -0.5325022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6095617, 0.68732315, -0.5325022)
 
 [node name="windshield" parent="." instance=ExtResource("9_72ido")]
 
@@ -354,6 +485,122 @@ cast_shadow = 0
 
 [node name="Cube_009" parent="windowPassenger" index="0"]
 cast_shadow = 0
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9161792, 1.7826442, -2.09029)
+
+[node name="Ui" type="CanvasLayer" parent="."]
+script = ExtResource("12_4ffqf")
+
+[node name="Speedometer" type="Control" parent="Ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 947.0
+offset_top = 475.0
+offset_right = 987.0
+offset_bottom = 515.0
+
+[node name="speedometer" type="TextureProgressBar" parent="Ui/Speedometer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4, 0.4)
+max_value = 59.0
+step = 0.1
+value = 51.0
+fill_mode = 3
+texture_under = ExtResource("12_u1hgu")
+texture_progress = ExtResource("13_4ffqf")
+
+[node name="speed" type="Label" parent="Ui/Speedometer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 14.0
+offset_right = 254.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 100
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mph" type="Label" parent="Ui/Speedometer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 253.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 36
+text = "MPH"
+horizontal_alignment = 1
+
+[node name="Gears" type="Label" parent="Ui/Speedometer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 12.0
+offset_right = 161.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+theme_override_constants/line_spacing = -43
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 100
+text = "D
+N
+R
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParkIcon" type="Label" parent="Ui/Speedometer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 46.675003
+offset_right = 161.0
+offset_bottom = 461.675
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = -43
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 100
+text = "P"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tick" type="Sprite2D" parent="Ui/Speedometer"]
+position = Vector2(-47, 137)
+scale = Vector2(0.4, 0.2)
+texture = ExtResource("16_xfen4")
 
 [editable path="carBase"]
 [editable path="DoorHinge/driverWindow"]

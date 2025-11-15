@@ -8,8 +8,10 @@ const JUMP_VELOCITY = 4.5
 @onready var ui: CanvasLayer = $Ui
 
 
-@export var cam_speed : float = 5
-@export var cam_rotation_amount : float = 1
+@onready var cam_speed : float = 0.003
+@onready var cam_rotation_amount : float = 0.075
+
+@onready var main_cam : Camera3D = $Cam/Camera3D
 
 @onready var item_hold: Node3D = $Cam/ItemHold
 @export var sway_amm : float = 5
@@ -33,23 +35,20 @@ func _ready():
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
+	move_cam_to_hold(delta)
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
 	
 	if Input.is_action_just_pressed("interact") and ui.looking_at_car_entry:
 		Global.car.enter_car()
 	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and main_cam.current:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -82,3 +81,12 @@ func item_bob(delta) -> void:
 	else:
 		item_hold.position.y = lerp(item_hold.position.y, def_pos.y, 10 * delta)
 		item_hold.position.x = lerp(item_hold.position.x, def_pos.x, 10 * delta)
+
+func move_cam_to_hold(delta : float) -> void:
+	main_cam.position.x = lerp(main_cam.position.x, 0.0, 5 * delta)
+	main_cam.position.y = lerp(main_cam.position.y, 0.0, 5 * delta)
+	main_cam.position.z = lerp(main_cam.position.z, 0.0, 5 * delta)
+	
+	main_cam.rotation.x = lerp(main_cam.rotation.x, 0.0, 5 * delta)
+	main_cam.rotation.y = lerp(main_cam.rotation.y, 0.0, 5 * delta)
+	main_cam.rotation.z = lerp(main_cam.rotation.z, 0.0, 5 * delta)
