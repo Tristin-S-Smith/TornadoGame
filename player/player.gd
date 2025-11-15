@@ -36,6 +36,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	move_cam_to_hold(delta)
+	Global.curr_player_location = global_position
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta

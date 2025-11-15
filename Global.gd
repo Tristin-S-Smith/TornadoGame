@@ -6,3 +6,6 @@ var car_cam : Camera3D
 
 var player : CharacterBody3D
 var player_cam : Camera3D
+
+var player_in_car : bool
+var curr_player_location : Vector3

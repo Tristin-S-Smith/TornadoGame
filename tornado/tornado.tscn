@@ -1,3 +1,211 @@
-[gd_scene format=3 uid="uid://cpfypc8t6nrbw"]
+[gd_scene load_steps=21 format=3 uid="uid://cpfypc8t6nrbw"]
+
+[ext_resource type="Script" uid="uid://bpa77pt3jhhy2" path="res://tornado/tornado.gd" id="1_0isvb"]
+[ext_resource type="Texture2D" uid="uid://dr45k5igejock" path="res://tornado/effects/blackSmoke00.png" id="2_o338m"]
+[ext_resource type="Texture2D" uid="uid://b7qoxvi6bo1wa" path="res://tornado/effects/impact.png" id="3_8ys6p"]
+[ext_resource type="ArrayMesh" uid="uid://djt2qlv8otb1t" path="res://tornado/effects/coneModified.obj" id="4_hc402"]
+[ext_resource type="AudioStream" uid="uid://82ux5m4k5mrr" path="res://tornado/tornadoLoop.wav" id="5_hc402"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pw1ov"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o7nwv"]
+noise = SubResource("FastNoiseLite_pw1ov")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0isvb"]
+albedo_texture = SubResource("NoiseTexture2D_o7nwv")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pw1ov"]
+material = SubResource("StandardMaterial3D_0isvb")
+top_radius = 100.0
+bottom_radius = 25.0
+height = 200.0
+
+[sub_resource type="Animation" id="Animation_pw1ov"]
+resource_name = "spin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConeModified:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ConeModified2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0), Vector3(0, -3.1415927, 0), Vector3(0, -4.712389, 0), Vector3(0, -6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o7nwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ConeModified:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ConeModified2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0isvb"]
+_data = {
+&"RESET": SubResource("Animation_o7nwv"),
+&"spin": SubResource("Animation_pw1ov")
+}
+
+[sub_resource type="Curve" id="Curve_o338m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7046633, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8ys6p"]
+curve = SubResource("Curve_o338m")
+
+[sub_resource type="Curve" id="Curve_0isvb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1658031, 0), 0.0, 0.0, 0, 0, Vector2(0.7668394, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_o338m"]
+curve = SubResource("Curve_0isvb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ys6p"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 29.0
+emission_ring_inner_radius = 28.5
+emission_ring_cone_angle = 90.0
+angle_min = 1.0728835e-05
+angle_max = 99.000015
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, 25, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 19.999998
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 249.99998
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_o338m")
+alpha_curve = SubResource("CurveTexture_8ys6p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc402"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_o338m")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ac6ae"]
+material = SubResource("StandardMaterial3D_hc402")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac6ae"]
+transparency = 1
+cull_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.581033, 0.58103293, 0.5810329, 1)
+albedo_texture = ExtResource("3_8ys6p")
 
 [node name="Tornado" type="CharacterBody3D"]
+script = ExtResource("1_0isvb")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 97.635666, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_pw1ov")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0isvb")
+}
+autoplay = "spin"
+speed_scale = 0.7
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 100
+visibility_aabb = AABB(-140.74715, -9.999892, -117.64709, 262.2901, 174.01057, 245.27525)
+process_material = SubResource("ParticleProcessMaterial_8ys6p")
+draw_pass_1 = SubResource("QuadMesh_ac6ae")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57, 0)
+strength = 100.0
+radius = 100.0
+
+[node name="ConeModified" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 15, 0, -7, 0)
+material_override = SubResource("StandardMaterial3D_ac6ae")
+transparency = 0.2
+cast_shadow = 0
+mesh = ExtResource("4_hc402")
+
+[node name="ConeModified2" type="MeshInstance3D" parent="."]
+transform = Transform3D(17, 0, 0, 0, 20, 0, 0, 0, 17, 0, -10, 0)
+material_override = SubResource("StandardMaterial3D_ac6ae")
+transparency = 0.2
+cast_shadow = 0
+mesh = ExtResource("4_hc402")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_hc402")
+volume_db = 5.0
+unit_size = 20.0
+autoplay = true
+attenuation_filter_cutoff_hz = 20500.0

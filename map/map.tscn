@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl3losxm3rp87"]
+[gd_scene load_steps=20 format=3 uid="uid://bl3losxm3rp87"]
 
+[ext_resource type="AudioStream" uid="uid://bxg51wcrktbdw" path="res://music/ruskerdax_were_lost_cut.wav" id="1_5jdw0"]
 [ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_a0dt8"]
 [ext_resource type="Shader" uid="uid://cfvtm02i3vk48" path="res://map/sky.gdshader" id="1_kffv2"]
 [ext_resource type="Texture2D" uid="uid://tf64kwmlehbi" path="res://map/textures/foundation/asphalt_road_3.jpg" id="2_4hjbm"]
 [ext_resource type="PackedScene" uid="uid://d12fg5cw2ptk3" path="res://player/player.tscn" id="3_4hjbm"]
 [ext_resource type="PackedScene" uid="uid://cfwldmlsvc0ma" path="res://car/car.tscn" id="4_lgq1i"]
+[ext_resource type="PackedScene" uid="uid://cpfypc8t6nrbw" path="res://tornado/tornado.tscn" id="6_7lyie"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kffv2"]
 
@@ -35,12 +37,11 @@ sky_material = SubResource("ShaderMaterial_7lyie")
 background_mode = 2
 background_energy_multiplier = 0.1
 sky = SubResource("Sky_5jdw0")
-fog_mode = 1
-fog_light_color = Color(0.25479978, 0.27959406, 0.3185585, 1)
-fog_density = 0.6523
-fog_sky_affect = 0.565
+fog_light_color = Color(0, 0, 0, 1)
+fog_sun_scatter = 31.2
+fog_density = 1.6483
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.03
+volumetric_fog_emission = Color(0.28118682, 0.28118688, 0.28118682, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgq1i"]
 albedo_texture = ExtResource("1_a0dt8")
@@ -69,12 +70,16 @@ size = Vector3(100, 100, 100)
 
 [node name="Map" type="Node3D"]
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5jdw0")
+autoplay = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kxmgb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-light_energy = 0.1
+light_energy = 0.01
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
@@ -95,7 +100,7 @@ material_override = SubResource("StandardMaterial3D_5jdw0")
 mesh = SubResource("BoxMesh_kxmgb")
 
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.851625, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.851625, 0)
 
 [node name="Car" parent="." instance=ExtResource("4_lgq1i")]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 0, 2.8820696, -4.522393)
@@ -103,3 +108,6 @@ transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0, -336)
 mesh = SubResource("BoxMesh_kffv2")
+
+[node name="Tornado" parent="." instance=ExtResource("6_7lyie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfwldmlsvc0ma"]
+[gd_scene load_steps=25 format=3 uid="uid://cfwldmlsvc0ma"]
 
 [ext_resource type="PackedScene" uid="uid://wgww2dsp12ra" path="res://car/carBase.glb" id="1_dxy33"]
 [ext_resource type="Script" uid="uid://c0mvjsfcrdde0" path="res://car/car.gd" id="1_jpe8o"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://clhycqfju5trj" path="res://car/ui.gd" id="12_4ffqf"]
 [ext_resource type="Texture2D" uid="uid://d3618binl64w0" path="res://car/ui/speedometerEmpty.png" id="12_u1hgu"]
 [ext_resource type="Texture2D" uid="uid://blqpjtk0t48nb" path="res://car/ui/speedometerFull.png" id="13_4ffqf"]
+[ext_resource type="AudioStream" uid="uid://c36ga0fwrdoaq" path="res://car/sounds/driveLoopShort.wav" id="13_iqaeg"]
 [ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="15_a5fo2"]
 [ext_resource type="Texture2D" uid="uid://jnnvc8y1wf8l" path="res://car/ui/gearTick.png" id="16_xfen4"]
 
@@ -131,6 +132,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(0, 1),
 "update": 0,
 "values": [0.0, 0.2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("carBase/InteriorLight:omni_range")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2880397, 0.3166648, 0.37749305, 0.40254),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.5, 1.5, 3.0]
 }
 
 [sub_resource type="Animation" id="Animation_wdy7j"]
@@ -252,6 +265,18 @@ tracks/8/keys = {
 "method": &"door_open"
 }]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("carBase/InteriorLight:omni_range")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.94462717, 0.9696741, 0.99472106),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 3.0, 1.6, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_bkrhx"]
 length = 0.001
@@ -322,6 +347,18 @@ tracks/5/path = NodePath("windowPassenger/Cube_009:transparency")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("carBase/InteriorLight:omni_range")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -431,6 +468,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8518329, -0.028, 0.8)
 light_color = Color(1, 0, 0, 1)
 omni_range = 2.0
 
+[node name="InteriorLight" type="OmniLight3D" parent="carBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015013382, 0.6593883, 0)
+light_color = Color(1, 0.5529412, 0, 1)
+shadow_enabled = true
+omni_range = 0.0
+
 [node name="DoorHinge" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2241762, 0, -1.164827)
 
@@ -455,8 +498,8 @@ cast_shadow = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1848989, 0.18538529, 0)
 stream = ExtResource("5_h3fet")
 attenuation_model = 1
-volume_db = -20.0
-max_db = 0.0
+volume_db = -25.0
+max_db = -2.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
 
@@ -488,6 +531,10 @@ cast_shadow = 0
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9161792, 1.7826442, -2.09029)
+
+[node name="EngineDrive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_iqaeg")
+autoplay = true
 
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("12_4ffqf")

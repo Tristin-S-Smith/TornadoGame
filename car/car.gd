@@ -1,13 +1,13 @@
 extends VehicleBody3D
 
-const MAX_STEER = 0.8
+const MAX_STEER = 0.7
 @onready var main_cam: Camera3D = $carBase/CamHold/Camera3D
 @onready var cam_hold: Node3D = $carBase/CamHold
 @onready var anims: AnimationPlayer = $AnimationPlayer
 const POWER = 125
 
 var engine_inside_vol = -50
-var engine_outside_vol = -20
+var engine_outside_vol = -25
 
 var player_in_car = false
 
@@ -34,6 +34,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_in_car:
+		Global.curr_player_location = global_position
 		var axis = Input.get_axis("right", "left")
 		steering = move_toward(steering, axis * MAX_STEER, 2 * delta)
 		steering_wheel.rotation.x = lerp_angle(steering_wheel.rotation.x, axis * -0.8, 2 * delta)
@@ -69,6 +70,11 @@ func _process(delta: float) -> void:
 	else:
 		steering = move_toward(steering, 0 * MAX_STEER, 2 * delta)
 		steering_wheel.rotation.x = lerp_angle(steering_wheel.rotation.x, 0 * -0.8, 2 * delta)
+	
+	if current_gear == Gears.DRIVE or current_gear == Gears.REVERSE:
+		$EngineDrive.volume_db = lerp($EngineDrive.volume_db, -3.0, 5*delta)
+	else:
+		$EngineDrive.volume_db = lerp($EngineDrive.volume_db, -60.0, 5*delta)
 
 func _physics_process(delta: float) -> void:
 	move_cam_to_hold(delta)
@@ -124,6 +130,8 @@ func mod_player_camera() -> void:
 
 func door_closed():
 	$Engine.volume_db = engine_inside_vol
+	Global.player_in_car = true
 
 func door_open():
 	$Engine.volume_db = engine_outside_vol
+	Global.player_in_car = false
