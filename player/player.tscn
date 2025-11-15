@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d12fg5cw2ptk3"]
+[gd_scene load_steps=7 format=3 uid="uid://d12fg5cw2ptk3"]
 
 [ext_resource type="Script" uid="uid://dnkrrlf6mlfdu" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cdw6r6qfnq2kf" path="res://player/ui.gd" id="2_g1dw6"]
+[ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="2_rkbax"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
@@ -27,9 +29,51 @@ shape = SubResource("CapsuleShape3D_rkbax")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4985878, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Cam"]
+far = 150.0
+
+[node name="CarEntryBeam" type="RayCast3D" parent="Cam/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044688582, 0)
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 2
 
 [node name="ItemHold" type="Node3D" parent="Cam"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cam/ItemHold"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184, -0.105, 0.106)
 mesh = SubResource("BoxMesh_oul6g")
+
+[node name="Ui" type="CanvasLayer" parent="."]
+script = ExtResource("2_g1dw6")
+
+[node name="Label" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.5
+offset_top = -198.0
+offset_right = 115.5
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_rkbax")
+theme_override_font_sizes/font_size = 36
+text = "[E] Enter Car"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -567.0
+offset_top = -641.0
+offset_right = -336.0
+offset_bottom = -592.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_rkbax")
+theme_override_font_sizes/font_size = 36
+text = "60"

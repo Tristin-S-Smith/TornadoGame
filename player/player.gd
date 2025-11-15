@@ -5,6 +5,8 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 @onready var cam: Node3D = $Cam
+@onready var ui: CanvasLayer = $Ui
+
 
 @export var cam_speed : float = 5
 @export var cam_rotation_amount : float = 1
@@ -27,8 +29,14 @@ func _input(event):
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	def_pos = item_hold.position
+	Global.player_cam = $Cam/Camera3D
+	Global.player = self
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("interact") and ui.looking_at_car_entry:
+		Global.car.enter_car()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

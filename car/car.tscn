@@ -1,27 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfwldmlsvc0ma"]
+[gd_scene load_steps=17 format=3 uid="uid://cfwldmlsvc0ma"]
 
 [ext_resource type="PackedScene" uid="uid://wgww2dsp12ra" path="res://car/carBase.glb" id="1_dxy33"]
 [ext_resource type="Script" uid="uid://c0mvjsfcrdde0" path="res://car/car.gd" id="1_jpe8o"]
 [ext_resource type="PackedScene" uid="uid://ddmrwynbqd6gf" path="res://car/carDoor.glb" id="2_hkabp"]
 [ext_resource type="PackedScene" uid="uid://bpaiyqkvjdoee" path="res://car/wheel.glb" id="3_hkabp"]
+[ext_resource type="PackedScene" uid="uid://do54aknnqhj5e" path="res://car/driverWindow.glb" id="5_coc8s"]
 [ext_resource type="AudioStream" uid="uid://blk8o5pg81qow" path="res://car/sounds/engineLoop.wav" id="5_h3fet"]
 [ext_resource type="AudioStream" uid="uid://cqunqlmwvach1" path="res://car/sounds/open-car-door-372469.mp3" id="6_xhmyn"]
 [ext_resource type="AudioStream" uid="uid://bko1tacdiurxi" path="res://car/sounds/car-door-close-6929.mp3" id="7_vl2bd"]
+[ext_resource type="PackedScene" uid="uid://dqfjuo6r2whv0" path="res://car/steeringWheel.glb" id="8_vl2bd"]
+[ext_resource type="PackedScene" uid="uid://dwhuyawwitvis" path="res://car/windshield.glb" id="9_72ido"]
+[ext_resource type="PackedScene" uid="uid://bt5nqcxcovd3d" path="res://car/windowPassenger.glb" id="11_wdy7j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxy33"]
 size = Vector3(6.5948486, 1.2338867, 2.379486)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhmyn"]
+size = Vector3(1.2577515, 1, 1)
+
 [sub_resource type="Animation" id="Animation_h3fet"]
 resource_name = "EnterCar"
-length = 2.0
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("carBase/Camera3D:position")
+tracks/0/path = NodePath("carBase/CamHold:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1333333, 1.1999999, 1.7333332),
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1, 1.1666666, 1.6999999),
 "transitions": PackedFloat32Array(1, 2, 0.5, 1, -2, 1),
 "update": 0,
 "values": [Vector3(0.05, 1, -2.002), Vector3(-0.365, 1, -2.827), Vector3(-0.335, 1, -1.692), Vector3(-0.335, 1, -1.1674821), Vector3(-0.335, 1, -1.1674821), Vector3(0.065, 1.08, -0.537)]
@@ -29,11 +36,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carBase/Camera3D:rotation")
+tracks/1/path = NodePath("carBase/CamHold:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1333333, 1.1999999, 1.7333332),
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1, 1.1666666, 1.6999999),
 "transitions": PackedFloat32Array(1, 2, 0.5, 1, -2, 1),
 "update": 0,
 "values": [Vector3(0, 3.1415927, 0), Vector3(-0.28797933, 3.1415927, 0), Vector3(-0.2268928, 3.7262785, -1.3003717e-08), Vector3(-0.2268928, 5.061455, 0.17453292), Vector3(-0.2268928, 5.061455, 0.17453292), Vector3(0, 4.712389, 0)]
@@ -45,7 +52,7 @@ tracks/2/path = NodePath("DoorHinge:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 1.1333332, 1.4333333),
+"times": PackedFloat32Array(0, 0.43333334, 1.0999999, 1.4),
 "transitions": PackedFloat32Array(2, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.6981317, 0), Vector3(0, -0.6981317, 0), Vector3(0, 0, 0)]
@@ -66,16 +73,66 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("7_vl2bd")
 }],
-"times": PackedFloat32Array(0, 1.2333333)
+"times": PackedFloat32Array(0, 1.2)
 }
 tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"door_closed"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DoorHinge/driverWindow/Cube_008:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 0.59999996),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("windshield/Cube_003:transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.23333335),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("windowPassenger/Cube_009:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
 
 [sub_resource type="Animation" id="Animation_bkrhx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("carBase/Camera3D:position")
+tracks/0/path = NodePath("carBase/CamHold:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +144,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("carBase/Camera3D:rotation")
+tracks/1/path = NodePath("carBase/CamHold:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -108,6 +165,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorHinge/driverWindow/Cube_008:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("windshield/Cube_003:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("windowPassenger/Cube_009:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkrhx"]
 _data = {
@@ -125,8 +218,9 @@ script = ExtResource("1_jpe8o")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.1564608, -0.44684023, -1.1831894)
 use_as_steering = true
 wheel_roll_influence = 0.01
-wheel_radius = 0.63
+wheel_radius = 0.65
 wheel_friction_slip = 1.4
+suspension_travel = 0.15
 suspension_stiffness = 120.0
 
 [node name="Wheel" parent="Driver_front" instance=ExtResource("3_hkabp")]
@@ -136,10 +230,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0577252, -0.44684023, -1.1831894)
 use_as_traction = true
 wheel_roll_influence = 0.01
-wheel_radius = 0.63
+wheel_radius = 0.65
 wheel_friction_slip = 1.1
-suspension_travel = 0.15
-suspension_stiffness = 80.0
+suspension_stiffness = 100.0
 
 [node name="Wheel" parent="Driver_back" instance=ExtResource("3_hkabp")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
@@ -148,8 +241,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.1564608, -0.44684023, 1.1770933)
 use_as_steering = true
 wheel_roll_influence = 0.01
-wheel_radius = 0.63
+wheel_radius = 0.65
 wheel_friction_slip = 1.4
+suspension_travel = 0.15
 suspension_stiffness = 120.0
 
 [node name="Wheel" parent="Passenger_front" instance=ExtResource("3_hkabp")]
@@ -159,23 +253,56 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.057725, -0.44684023, 1.1770928)
 use_as_traction = true
 wheel_roll_influence = 0.01
-wheel_radius = 0.63
+wheel_radius = 0.65
 wheel_friction_slip = 1.1
-suspension_travel = 0.15
-suspension_stiffness = 80.0
+suspension_stiffness = 100.0
 
 [node name="Wheel" parent="Passenger_back" instance=ExtResource("3_hkabp")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09829092, -0.11694336, -0.0032806396)
-visible = false
 shape = SubResource("BoxShape3D_dxy33")
 
 [node name="carBase" parent="." instance=ExtResource("1_dxy33")]
 
-[node name="Camera3D" type="Camera3D" parent="carBase"]
+[node name="CamHold" type="Node3D" parent="carBase"]
 transform = Transform3D(-0.99999994, 0, -8.742278e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0.05, 1, -2.002)
+
+[node name="Camera3D" type="Camera3D" parent="carBase/CamHold"]
+far = 150.0
+
+[node name="Headlight" type="SpotLight3D" parent="carBase"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0.08980864, -0.82657623)
+light_energy = 10.0
+spot_range = 24.969528
+spot_attenuation = 0.1
+spot_angle = 28.000399
+
+[node name="Headlight2" type="SpotLight3D" parent="carBase"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0.09, 0.827)
+light_energy = 10.0
+spot_range = 24.969528
+spot_attenuation = 0.1
+spot_angle = 28.000399
+
+[node name="OmniLight3D" type="OmniLight3D" parent="carBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.021, 0.465, -1)
+omni_range = 2.455
+
+[node name="om" type="OmniLight3D" parent="carBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02, 0.465, 1)
+omni_range = 2.455
+
+[node name="Back2" type="OmniLight3D" parent="carBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8508327, -0.028, -0.8)
+light_color = Color(1, 0, 0, 1)
+omni_range = 2.0
+
+[node name="Back" type="OmniLight3D" parent="carBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8518329, -0.028, 0.8)
+light_color = Color(1, 0, 0, 1)
+omni_range = 2.0
 
 [node name="DoorHinge" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2241762, 0, -1.164827)
@@ -183,11 +310,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2241762, 0, -1.164827)
 [node name="carDoor" parent="DoorHinge" instance=ExtResource("2_hkabp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2241762, 0, 1.164827)
 
+[node name="CarEnterTrigger" type="StaticBody3D" parent="DoorHinge/carDoor" groups=["carEnterTrigger"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorHinge/carDoor/CarEnterTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040924072, 0.6546002, -0.75307655)
+shape = SubResource("BoxShape3D_xhmyn")
+
+[node name="driverWindow" parent="DoorHinge" instance=ExtResource("5_coc8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2241762, 0, 1.164827)
+
+[node name="Cube_008" parent="DoorHinge/driverWindow" index="0"]
+cast_shadow = 0
+
 [node name="Engine" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1848989, 0.18538529, 0)
 stream = ExtResource("5_h3fet")
 attenuation_model = 1
-volume_db = -15.0
+volume_db = -20.0
 max_db = 0.0
 autoplay = true
 attenuation_filter_cutoff_hz = 20500.0
@@ -199,4 +340,22 @@ libraries = {
 
 [node name="AnimSounds" type="AudioStreamPlayer" parent="."]
 
+[node name="AnimSounds2" type="AudioStreamPlayer" parent="."]
+
+[node name="steeringWheel" parent="." instance=ExtResource("8_vl2bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6232816, 0.66468877, -0.5325022)
+
+[node name="windshield" parent="." instance=ExtResource("9_72ido")]
+
+[node name="Cube_003" parent="windshield" index="0"]
+cast_shadow = 0
+
+[node name="windowPassenger" parent="." instance=ExtResource("11_wdy7j")]
+
+[node name="Cube_009" parent="windowPassenger" index="0"]
+cast_shadow = 0
+
 [editable path="carBase"]
+[editable path="DoorHinge/driverWindow"]
+[editable path="windshield"]
+[editable path="windowPassenger"]
