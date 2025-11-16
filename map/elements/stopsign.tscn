@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cds3ewa3nvt36"]
+
+[ext_resource type="PackedScene" uid="uid://26pu4twtfi6j" path="res://map/models/country/stopsign.glb" id="1_1wd2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnuvv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_de3fe"]
+material = SubResource("StandardMaterial3D_wnuvv")
+size = Vector3(0.3, 0.2, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7eqqd"]
+size = Vector3(0.4, 2, 0.4)
+
+[node name="Stopsign" type="Node3D"]
+
+[node name="stopsign" parent="." instance=ExtResource("1_1wd2h")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.46163958, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06705433, 0)
+mesh = SubResource("BoxMesh_de3fe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96181566, 0)
+shape = SubResource("BoxShape3D_7eqqd")

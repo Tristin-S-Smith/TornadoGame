@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi5keer0npm3y"
-path.s3tc="res://.godot/imported/Dirt_02.png-0be4c247850795b234282e7502d17f02.s3tc.ctex"
+uid="uid://bxkuqfff1sv5l"
+path="res://.godot/imported/playerIcon.png-82ad98f960f20e0336ef76c3d83ee4f1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://map/textures/foundation/Dirt_02.png"
-dest_files=["res://.godot/imported/Dirt_02.png-0be4c247850795b234282e7502d17f02.s3tc.ctex"]
+source_file="res://map/ui/playerIcon.png"
+dest_files=["res://.godot/imported/playerIcon.png-82ad98f960f20e0336ef76c3d83ee4f1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

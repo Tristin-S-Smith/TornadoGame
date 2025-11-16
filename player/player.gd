@@ -22,6 +22,7 @@ var def_pos : Vector3
 
 func _input(event):
 	if !cam : return
+	if !main_cam.current : return
 	if event is InputEventMouseMotion:
 		cam.rotation.x -= event.relative.y * cam_speed
 		cam.rotation.x = clamp(cam.rotation.x, -1.25, 1.5)
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	
-	if Input.is_action_just_pressed("interact") and ui.looking_at_car_entry:
+	if Input.is_action_just_pressed("interact") and ui.looking_at_car_entry and main_cam.current:
 		Global.car.enter_car()
 	
 
@@ -91,3 +92,6 @@ func move_cam_to_hold(delta : float) -> void:
 	main_cam.rotation.x = lerp(main_cam.rotation.x, 0.0, 5 * delta)
 	main_cam.rotation.y = lerp(main_cam.rotation.y, 0.0, 5 * delta)
 	main_cam.rotation.z = lerp(main_cam.rotation.z, 0.0, 5 * delta)
+	
+	global_rotation.x = lerp(global_rotation.x, 0.0, 5 * delta)
+	global_rotation.z = lerp(global_rotation.z, 0.0, 5 * delta)

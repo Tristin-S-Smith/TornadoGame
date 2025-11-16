@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b84uel4rups4x"]
+
+[ext_resource type="Texture2D" uid="uid://53ae4oh4nbnp" path="res://map/textures/foundation/concrete1_seamless_diffuse_1k.png" id="1_jwu6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gpqh"]
+albedo_color = Color(0.50140655, 0.5014065, 0.5014065, 1)
+albedo_texture = ExtResource("1_jwu6p")
+uv1_scale = Vector3(0.195, 0.195, 0.195)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_21pes"]
+size = Vector3(7, 1, 200)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jwu6p"]
+points = PackedVector3Array(-6.5, 0, -100, -3.5, 1.2, -100, 6.5, 0, -100, 3.5, 1.2, -100, -6.5, 0, 100, -3.5, 1.2, 100, 6.5, 0, 100, 3.5, 1.2, 100)
+
+[node name="CityRoad" type="Node3D"]
+
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23791963, 0)
+material_override = SubResource("StandardMaterial3D_6gpqh")
+mesh = SubResource("BoxMesh_21pes")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.721, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D3"]
+shape = SubResource("ConvexPolygonShape3D_jwu6p")

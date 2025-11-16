@@ -127,6 +127,10 @@ func spawn_player() -> void:
 func mod_player_camera() -> void:
 	Global.player.main_cam.global_position = main_cam.global_position
 	Global.player.global_rotation = main_cam.global_rotation
+	#await get_tree().create_timer(1.0).timeout
+	#Global.player.global_rotation.x = 0
+	#Global.player.global_rotation.z = 0
+	
 
 func door_closed():
 	$Engine.volume_db = engine_inside_vol

@@ -27,6 +27,7 @@ shape = SubResource("CapsuleShape3D_rkbax")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4985878, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Cam"]
+current = true
 far = 150.0
 
 [node name="CarEntryBeam" type="RayCast3D" parent="Cam/Camera3D"]

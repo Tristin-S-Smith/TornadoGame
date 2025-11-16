@@ -530,7 +530,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9161792, 1.7826442, -2.09029)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9161792, 2.6188102, -2.09029)
 
 [node name="EngineDrive" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_iqaeg")

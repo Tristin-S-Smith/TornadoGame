@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi5keer0npm3y"
-path.s3tc="res://.godot/imported/Dirt_02.png-0be4c247850795b234282e7502d17f02.s3tc.ctex"
+uid="uid://53ae4oh4nbnp"
+path.s3tc="res://.godot/imported/concrete1_seamless_diffuse_1k.png-e0ffacbf4b231db2b23c2789a7e65170.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://map/textures/foundation/Dirt_02.png"
-dest_files=["res://.godot/imported/Dirt_02.png-0be4c247850795b234282e7502d17f02.s3tc.ctex"]
+source_file="res://map/textures/foundation/concrete1_seamless_diffuse_1k.png"
+dest_files=["res://.godot/imported/concrete1_seamless_diffuse_1k.png-e0ffacbf4b231db2b23c2789a7e65170.s3tc.ctex"]
 
 [params]
 

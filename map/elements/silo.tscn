@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fe3jivilsdux"]
+
+[ext_resource type="PackedScene" uid="uid://bupjiyb3jgyu1" path="res://map/models/country/silo.glb" id="1_pm1yl"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_53j3k"]
+height = 7.5
+radius = 2.5
+
+[node name="Silo" type="Node3D"]
+
+[node name="silo" parent="." instance=ExtResource("1_pm1yl")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+shape = SubResource("CylinderShape3D_53j3k")

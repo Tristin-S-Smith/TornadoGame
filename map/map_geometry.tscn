@@ -1,8 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://baxkfe8w768yg"]
+[gd_scene load_steps=20 format=3 uid="uid://baxkfe8w768yg"]
 
 [ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_6uw01"]
 [ext_resource type="PackedScene" uid="uid://cpmgir6rfpj1h" path="res://map/elements/road.tscn" id="2_1umrh"]
 [ext_resource type="PackedScene" uid="uid://d5iryuktyn53" path="res://map/elements/dirt_road.tscn" id="3_4d0js"]
+[ext_resource type="PackedScene" uid="uid://b84uel4rups4x" path="res://map/elements/city_road.tscn" id="4_0msuo"]
+[ext_resource type="PackedScene" uid="uid://cetgrtkptxnf6" path="res://map/elements/city_road_small.tscn" id="5_7cwc7"]
+[ext_resource type="PackedScene" uid="uid://b0itve56crsu6" path="res://map/elements/windfarm.tscn" id="6_q2ioe"]
+[ext_resource type="PackedScene" uid="uid://cds3ewa3nvt36" path="res://map/elements/stopsign.tscn" id="7_15t7y"]
+[ext_resource type="PackedScene" uid="uid://6ux71axa2ktk" path="res://map/elements/picket.tscn" id="8_lu4e8"]
+[ext_resource type="Texture2D" uid="uid://c2w5b4xjic5lt" path="res://map/textures/foundation/Dirt_03.png" id="9_k0pxi"]
+[ext_resource type="PackedScene" uid="uid://fe3jivilsdux" path="res://map/elements/silo.tscn" id="10_o5kue"]
+[ext_resource type="Texture2D" uid="uid://bi5keer0npm3y" path="res://map/textures/foundation/Dirt_02.png" id="11_42g83"]
+[ext_resource type="PackedScene" uid="uid://cpeaox6fiqbba" path="res://map/elements/solar_panel.tscn" id="12_l6hyi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgq1i"]
 albedo_texture = ExtResource("1_6uw01")
@@ -15,6 +24,24 @@ size = Vector2(3000, 3000)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4d0js"]
 data = PackedVector3Array(1500, 0, 1500, -1500, 0, 1500, 1500, 0, -1500, -1500, 0, 1500, -1500, 0, -1500, 1500, 0, -1500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5kue"]
+albedo_texture = ExtResource("9_k0pxi")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_42g83"]
+material = SubResource("StandardMaterial3D_o5kue")
+size = Vector3(910, 1, 325)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6hyi"]
+albedo_color = Color(0.75686276, 1, 0, 1)
+albedo_texture = ExtResource("11_42g83")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtx5c"]
+material = SubResource("StandardMaterial3D_l6hyi")
+size = Vector3(200, 1, 200)
 
 [node name="MapGeometry" type="Node3D"]
 
@@ -31,7 +58,7 @@ shape = SubResource("ConcavePolygonShape3D_4d0js")
 [node name="Road" parent="Roads" instance=ExtResource("2_1umrh")]
 
 [node name="Road2" parent="Roads" instance=ExtResource("2_1umrh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 940, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 940, 0.02, 0)
 
 [node name="Road3" parent="Roads" instance=ExtResource("2_1umrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -531, 0, 0)
@@ -49,10 +76,10 @@ transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.965
 transform = Transform3D(-0.5735764, 0, -0.8191519, 0, 1, 0, 0.8191519, 0, -0.5735764, -266, -0.01, -1174)
 
 [node name="DirtRoad7" parent="Roads" instance=ExtResource("3_4d0js")]
-transform = Transform3D(-0.34202024, 0, -1.4142374, 0, 1, 0, 0.9396926, 0, -0.51474047, -1169, -0.02, -577)
+transform = Transform3D(-0.34202024, 0, -1.4142374, 0, 1, 0, 0.9396926, 0, -0.51474047, -1136, -0.04, -685)
 
 [node name="DirtRoad6" parent="Roads" instance=ExtResource("3_4d0js")]
-transform = Transform3D(-0.08715577, 0, -1.4444824, 0, 1, 0, 0.9961947, 0, -0.12637587, 470, -0.02, -1174)
+transform = Transform3D(-0.08715577, 0, -1.4444824, 0, 1, 0, 0.9961947, 0, -0.12637587, 470, -0.02, -1296)
 
 [node name="DirtRoad2" parent="Roads" instance=ExtResource("3_4d0js")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -853, -0.03, 1329)
@@ -64,4 +91,3577 @@ transform = Transform3D(0.56640613, 0, -0.824126, 0, 1, 0, 0.824126, 0, 0.566406
 transform = Transform3D(-0.43051112, 0, -0.90258515, 0, 1, 0, 0.90258515, 0, -0.43051112, 1229.82, -0.03, -411.98)
 
 [node name="DirtRoad5" parent="Roads" instance=ExtResource("3_4d0js")]
-transform = Transform3D(0.078458995, 0, -0.9969172, 0, 1, 0, 0.9969172, 0, 0.078458995, -1232.18, -0.03, 375.02002)
+transform = Transform3D(0.078458995, 0, -0.9969172, 0, 1, 0, 0.9969172, 0, 0.078458995, -1232.18, -0.07, 375.02)
+
+[node name="CityRoad" parent="Roads" instance=ExtResource("4_0msuo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1136.485, -0.07, 1018)
+
+[node name="CityRoad3" parent="Roads" instance=ExtResource("4_0msuo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1037.485, -0.07, 1118)
+
+[node name="CityRoad2" parent="Roads" instance=ExtResource("4_0msuo")]
+transform = Transform3D(-5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, -5.9604645e-08, 1040, -0.05, 921)
+
+[node name="CityRoadSmall" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011, -0.1, 973)
+
+[node name="CityRoadSmall2" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011, -0.11, 1070)
+
+[node name="CityRoadSmall5" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 892, -0.1, 981)
+
+[node name="CityRoadSmall7" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 975, -0.1, 887)
+
+[node name="CityRoadSmall6" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 916.53, -0.11, 1072.515)
+
+[node name="CityRoadSmall3" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1073, -0.1, 973)
+
+[node name="CityRoadSmall4" parent="Roads" instance=ExtResource("5_7cwc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1073, -0.11, 1070)
+
+[node name="Windfarms" type="Node3D" parent="."]
+
+[node name="Windfarm2" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -132, 0, -280)
+
+[node name="Windfarm" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.10512, 0, 88.85124)
+
+[node name="Windfarm2" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.394882, 0, -151.0378)
+
+[node name="Windfarm3" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392.42493, 0, -133.6999)
+
+[node name="Windfarm24" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.25881898, 0, 0.9659257, 0, 1, 0, -0.9659257, 0, 0.25881898, -621.58875, 0, 101.376205)
+
+[node name="Windfarm25" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.25881898, 0, 0.9659257, 0, 1, 0, -0.9659257, 0, 0.25881898, -676.1483, 0, 132.8762)
+
+[node name="Windfarm26" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.25881898, 0, 0.9659257, 0, 1, 0, -0.9659257, 0, 0.25881898, -750.4758, 0, 126.1371)
+
+[node name="Windfarm4" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.03847, 0, -417.9793)
+
+[node name="Windfarm5" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.40187, 0, -287.28827)
+
+[node name="Windfarm6" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -336.47552, 0, -298.79272)
+
+[node name="Windfarm7" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -552.5492, 0, -383.04333)
+
+[node name="Windfarm8" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -461.6761, 0, -309.64642)
+
+[node name="Windfarm9" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -263.57422, 0, -584.52386)
+
+[node name="Windfarm10" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301.27478, 0, -443.82324)
+
+[node name="Windfarm11" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -523.0087, 0, -517.87756)
+
+[node name="Windfarm12" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -660.52277, 0, -592.0588)
+
+[node name="Windfarm13" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405.65735, 0, -570.61896)
+
+[node name="Windfarm14" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -257.1573, 0, -313.40936)
+
+[node name="Windfarm18" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 935.3027, 0, -982.2111)
+
+[node name="Windfarm19" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 861.61163, 0, -1090.5748)
+
+[node name="Windfarm20" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 1097.847, 0, -883.7474)
+
+[node name="Windfarm21" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 1060.1462, 0, -1024.448)
+
+[node name="Windfarm22" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 1213.9423, 0, -966.8309)
+
+[node name="Windfarm23" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.86602527, 0, -0.4999998, 0, 1, 0, 0.4999998, 0, -0.86602527, 956.7328, 0, -1115.3308)
+
+[node name="Windfarm15" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.7502, 0, -74.04407)
+
+[node name="Windfarm16" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.475906, 0, -235.28316)
+
+[node name="Windfarm17" parent="Windfarms/Windfarm2" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.475906, 0, -235.28316)
+
+[node name="Windfarm3" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -237, 0, -107)
+
+[node name="Windfarm39" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -700, 0, 1354)
+
+[node name="Windfarm40" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -750, 0, 1354)
+
+[node name="Windfarm41" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -800, 0, 1354)
+
+[node name="Windfarm4" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -237, 0, -409)
+
+[node name="Windfarm5" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -327, 0, -245)
+
+[node name="Windfarm6" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -401, 0, -446)
+
+[node name="Windfarm7" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -227, 0, -300)
+
+[node name="Windfarm8" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -153, 0, -160)
+
+[node name="Windfarm9" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -323, 0, -123)
+
+[node name="Windfarm10" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -403, 0, -304)
+
+[node name="Windfarm11" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -212, 0, -209)
+
+[node name="Windfarm12" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -212, 0, -552)
+
+[node name="Windfarm15" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1001.4957, 0, -1283.2703)
+
+[node name="Windfarm16" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1152.4957, 0, -1021.7306)
+
+[node name="Windfarm17" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1089.3354, 0, -1111.1274)
+
+[node name="Windfarm20" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1051.3354, 0, -988.12744)
+
+[node name="Windfarm21" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1032.3354, 0, -823.12744)
+
+[node name="Windfarm22" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1082.3354, 0, -710.12744)
+
+[node name="Windfarm23" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1085.3354, 0, -579.12744)
+
+[node name="Windfarm24" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1360.3354, 0, -804.12744)
+
+[node name="Windfarm25" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1298.3354, 0, -976.12744)
+
+[node name="Windfarm26" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1423.3354, 0, -1157.1274)
+
+[node name="Windfarm27" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1267.3354, 0, -1199.1274)
+
+[node name="Windfarm28" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1140.3354, 0, -1263.1274)
+
+[node name="Windfarm29" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1031.3354, 0, -1347.1274)
+
+[node name="Windfarm30" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1072.3354, 0, -1415.1274)
+
+[node name="Windfarm31" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 978.33545, 0, -1390.1274)
+
+[node name="Windfarm32" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1131.3354, 0, -1374.1274)
+
+[node name="Windfarm33" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1222.3354, 0, -1304.1274)
+
+[node name="Windfarm34" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1345.3354, 0, -1356.1274)
+
+[node name="Windfarm35" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1244.3354, 0, -1421.1274)
+
+[node name="Windfarm36" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1318.3354, 0, -1260.1274)
+
+[node name="Windfarm37" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1318.3354, 0, -1086.1274)
+
+[node name="Windfarm38" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1174.3354, 0, -1129.1274)
+
+[node name="Windfarm18" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1030.8452, 0, -1182.4357)
+
+[node name="Windfarm19" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1202.3452, 0, -885.38904)
+
+[node name="Windfarm13" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.50000006, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, -0.50000006, -43, 0, 1299)
+
+[node name="Windfarm14" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.50000006, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, -0.50000006, -104, 0, 1339)
+
+[node name="Signage" type="Node3D" parent="."]
+
+[node name="Stopsign" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 57)
+
+[node name="Stopsign2" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 934, 0, 69)
+
+[node name="Stopsign3" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 946, 0, 57)
+
+[node name="Stopsign4" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 7, 0, 227)
+
+[node name="Stopsign6" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -524, 0, -187)
+
+[node name="Stopsign5" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -7, 0, 234)
+
+[node name="Stopsign7" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 946, 0, 978)
+
+[node name="Stopsign8" parent="Signage" instance=ExtResource("7_15t7y")]
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, 934, 0, 950)
+
+[node name="GreatFarm" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, 0)
+
+[node name="Picket" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="GreatFarm5" type="Node3D" parent="."]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 876, 0, -364)
+
+[node name="Picket" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm5" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="GreatFarm4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, 1430)
+
+[node name="Picket" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm4" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="GreatFarm2" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -247, 0, 1299)
+
+[node name="Picket" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm2" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="GreatFarm6" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -972, 0, 302)
+
+[node name="Picket" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm6" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="GreatFarm3" type="Node3D" parent="."]
+transform = Transform3D(1.0000001, 0, -1.39090695e-08, 0, 1, 0, 1.39090695e-08, 0, 1.0000001, -1413, 0, -1207)
+
+[node name="Picket" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 54)
+
+[node name="Picket2" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 54)
+
+[node name="Picket3" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 54)
+
+[node name="Picket4" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 54)
+
+[node name="Picket5" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 54)
+
+[node name="Picket6" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 54)
+
+[node name="Picket7" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 54)
+
+[node name="Picket8" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 54)
+
+[node name="Picket9" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 54)
+
+[node name="Picket10" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 0, 54)
+
+[node name="Picket11" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 0, 54)
+
+[node name="Picket12" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123, 0, 54)
+
+[node name="Picket13" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 0, 54)
+
+[node name="Picket14" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153, 0, 54)
+
+[node name="Picket15" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168, 0, 54)
+
+[node name="Picket16" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183, 0, 54)
+
+[node name="Picket17" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 0, 54)
+
+[node name="Picket18" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213, 0, 54)
+
+[node name="Picket19" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228, 0, 54)
+
+[node name="Picket20" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243, 0, 54)
+
+[node name="Picket21" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258, 0, 54)
+
+[node name="Picket22" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273, 0, 54)
+
+[node name="Picket23" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 54)
+
+[node name="Picket24" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303, 0, 54)
+
+[node name="Picket25" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318, 0, 54)
+
+[node name="Picket26" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 333, 0, 54)
+
+[node name="Picket27" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348, 0, 54)
+
+[node name="Picket28" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363, 0, 54)
+
+[node name="Picket29" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378, 0, 54)
+
+[node name="Picket30" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393, 0, 54)
+
+[node name="Picket31" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408, 0, 54)
+
+[node name="Picket32" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 423, 0, 54)
+
+[node name="Picket33" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 438, 0, 54)
+
+[node name="Picket34" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 453, 0, 54)
+
+[node name="Picket35" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 468, 0, 54)
+
+[node name="Picket36" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483, 0, 54)
+
+[node name="Picket37" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498, 0, 54)
+
+[node name="Picket38" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 513, 0, 54)
+
+[node name="Picket39" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528, 0, 54)
+
+[node name="Picket40" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543, 0, 54)
+
+[node name="Picket41" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558, 0, 54)
+
+[node name="Picket42" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 573, 0, 54)
+
+[node name="Picket43" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588, 0, 54)
+
+[node name="Picket44" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 603, 0, 54)
+
+[node name="Picket45" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 618, 0, 54)
+
+[node name="Picket46" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 633, 0, 54)
+
+[node name="Picket47" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648, 0, 54)
+
+[node name="Picket48" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 663, 0, 54)
+
+[node name="Picket49" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 678, 0, 54)
+
+[node name="Picket50" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 693, 0, 54)
+
+[node name="Picket51" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708, 0, 54)
+
+[node name="Picket52" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 723, 0, 54)
+
+[node name="Picket53" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 738, 0, 54)
+
+[node name="Picket54" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 753, 0, 54)
+
+[node name="Picket55" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 768, 0, 54)
+
+[node name="Picket56" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783, 0, 54)
+
+[node name="Picket57" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 798, 0, 54)
+
+[node name="Picket58" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 813, 0, 54)
+
+[node name="Picket59" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828, 0, 54)
+
+[node name="Picket60" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843, 0, 54)
+
+[node name="Picket61" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 858, 0, 54)
+
+[node name="Picket106" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27, 0, -276)
+
+[node name="Picket107" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -276)
+
+[node name="Picket108" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -276)
+
+[node name="Picket109" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -276)
+
+[node name="Picket110" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 0, -276)
+
+[node name="Picket111" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 48, 0, -276)
+
+[node name="Picket112" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 63, 0, -276)
+
+[node name="Picket113" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 78, 0, -276)
+
+[node name="Picket114" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, 0, -276)
+
+[node name="Picket115" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 108, 0, -276)
+
+[node name="Picket116" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 123, 0, -276)
+
+[node name="Picket117" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 138, 0, -276)
+
+[node name="Picket118" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 153, 0, -276)
+
+[node name="Picket119" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 168, 0, -276)
+
+[node name="Picket120" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 183, 0, -276)
+
+[node name="Picket121" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 198, 0, -276)
+
+[node name="Picket122" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 213, 0, -276)
+
+[node name="Picket123" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 228, 0, -276)
+
+[node name="Picket124" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 243, 0, -276)
+
+[node name="Picket125" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 258, 0, -276)
+
+[node name="Picket126" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 273, 0, -276)
+
+[node name="Picket127" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 288, 0, -276)
+
+[node name="Picket128" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 303, 0, -276)
+
+[node name="Picket129" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 318, 0, -276)
+
+[node name="Picket130" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 333, 0, -276)
+
+[node name="Picket131" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 348, 0, -276)
+
+[node name="Picket132" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 363, 0, -276)
+
+[node name="Picket133" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 378, 0, -276)
+
+[node name="Picket134" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 393, 0, -276)
+
+[node name="Picket135" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 408, 0, -276)
+
+[node name="Picket136" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 423, 0, -276)
+
+[node name="Picket137" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 438, 0, -276)
+
+[node name="Picket138" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 453, 0, -276)
+
+[node name="Picket139" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 468, 0, -276)
+
+[node name="Picket140" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 483, 0, -276)
+
+[node name="Picket141" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 498, 0, -276)
+
+[node name="Picket142" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 513, 0, -276)
+
+[node name="Picket143" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 528, 0, -276)
+
+[node name="Picket144" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 543, 0, -276)
+
+[node name="Picket145" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 558, 0, -276)
+
+[node name="Picket146" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 573, 0, -276)
+
+[node name="Picket147" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 588, 0, -276)
+
+[node name="Picket148" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 603, 0, -276)
+
+[node name="Picket149" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 618, 0, -276)
+
+[node name="Picket150" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 633, 0, -276)
+
+[node name="Picket151" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 648, 0, -276)
+
+[node name="Picket152" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 663, 0, -276)
+
+[node name="Picket153" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 678, 0, -276)
+
+[node name="Picket154" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 693, 0, -276)
+
+[node name="Picket155" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 708, 0, -276)
+
+[node name="Picket156" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 723, 0, -276)
+
+[node name="Picket157" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 738, 0, -276)
+
+[node name="Picket158" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 753, 0, -276)
+
+[node name="Picket159" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 768, 0, -276)
+
+[node name="Picket160" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 783, 0, -276)
+
+[node name="Picket161" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 798, 0, -276)
+
+[node name="Picket162" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 813, 0, -276)
+
+[node name="Picket163" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 828, 0, -276)
+
+[node name="Picket164" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 843, 0, -276)
+
+[node name="Picket165" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 858, 0, -276)
+
+[node name="Picket166" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 873, 0, -276)
+
+[node name="Picket62" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 54)
+
+[node name="Picket63" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 39)
+
+[node name="Picket64" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 24)
+
+[node name="Picket65" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, 9)
+
+[node name="Picket66" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -6)
+
+[node name="Picket67" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -21)
+
+[node name="Picket68" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -36)
+
+[node name="Picket69" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -51)
+
+[node name="Picket70" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -66)
+
+[node name="Picket71" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -81)
+
+[node name="Picket72" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -96)
+
+[node name="Picket73" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -111)
+
+[node name="Picket74" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -126)
+
+[node name="Picket75" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -141)
+
+[node name="Picket76" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -156)
+
+[node name="Picket77" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -171)
+
+[node name="Picket78" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -186)
+
+[node name="Picket79" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -201)
+
+[node name="Picket80" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -216)
+
+[node name="Picket81" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -231)
+
+[node name="Picket82" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -246)
+
+[node name="Picket83" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 873, 0, -261)
+
+[node name="Picket84" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 39)
+
+[node name="Picket85" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 24)
+
+[node name="Picket86" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, 9)
+
+[node name="Picket87" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -6)
+
+[node name="Picket88" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -21)
+
+[node name="Picket89" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -36)
+
+[node name="Picket90" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -51)
+
+[node name="Picket91" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -66)
+
+[node name="Picket92" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -81)
+
+[node name="Picket93" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -96)
+
+[node name="Picket94" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -111)
+
+[node name="Picket95" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -126)
+
+[node name="Picket96" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -141)
+
+[node name="Picket97" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -156)
+
+[node name="Picket98" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -171)
+
+[node name="Picket99" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -186)
+
+[node name="Picket100" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -201)
+
+[node name="Picket101" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -216)
+
+[node name="Picket102" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -231)
+
+[node name="Picket103" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -246)
+
+[node name="Picket104" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -261)
+
+[node name="Picket105" parent="GreatFarm3" instance=ExtResource("8_lu4e8")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -42, 0, -276)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GreatFarm3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 417, -0.39, -110)
+mesh = SubResource("BoxMesh_42g83")
+
+[node name="Silos" type="Node3D" parent="."]
+
+[node name="Silo" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 1150)
+
+[node name="Silo17" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -910, 0, -592)
+
+[node name="Silo18" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -925, 0, -600)
+
+[node name="Silo19" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -918, 0, -596)
+
+[node name="Silo3" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1214)
+
+[node name="Silo2" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 1150)
+
+[node name="Silo4" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -541, 0, 1321)
+
+[node name="Silo5" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -547, 0, 1321)
+
+[node name="Silo6" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -553, 0, 1321)
+
+[node name="Silo7" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -559, 0, 1321)
+
+[node name="Silo8" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -545, 0, -1149)
+
+[node name="Silo9" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -521, 0, -1363)
+
+[node name="Silo10" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -514, 0, -1359)
+
+[node name="Silo11" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 924, 0, -282)
+
+[node name="Silo12" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 924, 0, -289)
+
+[node name="Silo13" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 920.5, 0, -317.5)
+
+[node name="Silo14" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 927.5, 0, -317.5)
+
+[node name="Silo15" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 906.5, 0, -317.5)
+
+[node name="Silo16" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 913.5, 0, -317.5)
+
+[node name="GrassPatches" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424, -0.385, 230)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -1085, -0.385, 577)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -665, -0.385, 1220)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 109, -0.385, -1174)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 109, -0.385, -738)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 109, -0.385, 751)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 712, -0.385, 170)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1113, -0.385, -43)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="SolarPanels" type="Node3D" parent="."]
+
+[node name="SolarPanel" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, 268)
+
+[node name="SolarPanel2" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, 286)
+
+[node name="SolarPanel3" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, 304)
+
+[node name="SolarPanel4" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, 322)
+
+[node name="SolarPanel5" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21, 0, 268)
+
+[node name="SolarPanel6" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21, 0, 286)
+
+[node name="SolarPanel7" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21, 0, 304)
+
+[node name="SolarPanel8" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21, 0, 322)
+
+[node name="SolarPanel41" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 338)
+
+[node name="SolarPanel42" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 356)
+
+[node name="SolarPanel43" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 374)
+
+[node name="SolarPanel44" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 392)
+
+[node name="SolarPanel45" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 338)
+
+[node name="SolarPanel46" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 356)
+
+[node name="SolarPanel47" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 374)
+
+[node name="SolarPanel48" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 392)
+
+[node name="SolarPanel49" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 776)
+
+[node name="SolarPanel50" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 794)
+
+[node name="SolarPanel51" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 812)
+
+[node name="SolarPanel52" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -543, 0, 830)
+
+[node name="SolarPanel53" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 776)
+
+[node name="SolarPanel54" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 794)
+
+[node name="SolarPanel55" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 812)
+
+[node name="SolarPanel56" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -551, 0, 830)
+
+[node name="SolarPanel57" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1023.8518, 0, 828.04474)
+
+[node name="SolarPanel58" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1019.1931, 0, 810.6581)
+
+[node name="SolarPanel59" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1014.5343, 0, 793.27136)
+
+[node name="SolarPanel60" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1009.8756, 0, 775.8847)
+
+[node name="SolarPanel61" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1016.1244, 0, 830.1153)
+
+[node name="SolarPanel62" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1011.4657, 0, 812.72864)
+
+[node name="SolarPanel63" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1006.8069, 0, 795.3419)
+
+[node name="SolarPanel64" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-0.2588191, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.2588191, -1002.1482, 0, 777.95526)
+
+[node name="SolarPanel9" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 322)
+
+[node name="SolarPanel10" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 304)
+
+[node name="SolarPanel11" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 286)
+
+[node name="SolarPanel12" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 268)
+
+[node name="SolarPanel13" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 322)
+
+[node name="SolarPanel14" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 304)
+
+[node name="SolarPanel15" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 286)
+
+[node name="SolarPanel16" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 268)
+
+[node name="SolarPanel17" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 250)
+
+[node name="SolarPanel18" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 232)
+
+[node name="SolarPanel19" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 214)
+
+[node name="SolarPanel20" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 196)
+
+[node name="SolarPanel21" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 250)
+
+[node name="SolarPanel22" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 232)
+
+[node name="SolarPanel23" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 214)
+
+[node name="SolarPanel24" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 196)
+
+[node name="SolarPanel25" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1358)
+
+[node name="SolarPanel26" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1340)
+
+[node name="SolarPanel27" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1322)
+
+[node name="SolarPanel28" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1304)
+
+[node name="SolarPanel29" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1358)
+
+[node name="SolarPanel30" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1340)
+
+[node name="SolarPanel31" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1322)
+
+[node name="SolarPanel32" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1304)
+
+[node name="SolarPanel33" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1286)
+
+[node name="SolarPanel34" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1268)
+
+[node name="SolarPanel35" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1250)
+
+[node name="SolarPanel36" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 955, 0, 1232)
+
+[node name="SolarPanel37" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1286)
+
+[node name="SolarPanel38" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1268)
+
+[node name="SolarPanel39" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1250)
+
+[node name="SolarPanel40" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1232)

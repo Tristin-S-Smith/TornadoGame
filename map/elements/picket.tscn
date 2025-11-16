@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ux71axa2ktk"]
+
+[ext_resource type="PackedScene" uid="uid://bl53kk0gqhsmv" path="res://map/models/country/picket.glb" id="1_nh4by"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdfwu"]
+size = Vector3(15.176636, 2.3168945, 0.28)
+
+[node name="Picket" type="Node3D"]
+
+[node name="picket" parent="." instance=ExtResource("1_nh4by")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="picket2" parent="." instance=ExtResource("1_nh4by")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5, 0, 0)
+
+[node name="picket3" parent="." instance=ExtResource("1_nh4by")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4151716, 1.0262339, 0)
+shape = SubResource("BoxShape3D_hdfwu")
