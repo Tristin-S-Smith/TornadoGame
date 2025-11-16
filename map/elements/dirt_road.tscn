@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://d5iryuktyn53"]
+
+[ext_resource type="Texture2D" uid="uid://dvfgyrclv6h5i" path="res://map/textures/foundation/Dirt_01.png" id="1_junwa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hr25x"]
+albedo_color = Color(0.6033386, 0.3985349, 2.8878452e-07, 1)
+albedo_texture = ExtResource("1_junwa")
+uv1_scale = Vector3(0.38, 0.38, 0.38)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_oq2ps"]
+size = Vector3(7, 1, 650)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_junwa"]
+size = Vector3(3.12, 1, 650)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_junwa"]
+data = PackedVector3Array(-3.5, 0.5, 325, 3.5, 0.5, 325, -3.5, -0.5, 325, 3.5, 0.5, 325, 3.5, -0.5, 325, -3.5, -0.5, 325, 3.5, 0.5, -325, -3.5, 0.5, -325, 3.5, -0.5, -325, -3.5, 0.5, -325, -3.5, -0.5, -325, 3.5, -0.5, -325, 3.5, 0.5, 325, 3.5, 0.5, -325, 3.5, -0.5, 325, 3.5, 0.5, -325, 3.5, -0.5, -325, 3.5, -0.5, 325, -3.5, 0.5, -325, -3.5, 0.5, 325, -3.5, -0.5, -325, -3.5, 0.5, 325, -3.5, -0.5, 325, -3.5, -0.5, -325, 3.5, 0.5, 325, -3.5, 0.5, 325, 3.5, 0.5, -325, -3.5, 0.5, 325, -3.5, 0.5, -325, 3.5, 0.5, -325, -3.5, -0.5, 325, 3.5, -0.5, 325, -3.5, -0.5, -325, 3.5, -0.5, 325, 3.5, -0.5, -325, -3.5, -0.5, -325)
+
+[node name="DirtRoad" type="Node3D"]
+
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23791963, 0)
+material_override = SubResource("StandardMaterial3D_hr25x")
+mesh = SubResource("BoxMesh_oq2ps")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D"]
+transform = Transform3D(0.90903986, -0.4167092, 0, 0.4167092, 0.90903986, 0, 0, 0, 1, -4.697115, -0.60766405, 0)
+shape = SubResource("BoxShape3D_junwa")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Road/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.4784777, 0.2266469, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D/StaticBody3D2"]
+transform = Transform3D(0.90903986, -0.4167092, 0, 0.4167092, 0.90903986, 0, 0, 0, 1, -6.19071, -0.84589446, 0)
+shape = SubResource("BoxShape3D_junwa")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_junwa")

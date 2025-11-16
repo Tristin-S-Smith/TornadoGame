@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://baxkfe8w768yg"]
+
+[ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_6uw01"]
+[ext_resource type="PackedScene" uid="uid://cpmgir6rfpj1h" path="res://map/elements/road.tscn" id="2_1umrh"]
+[ext_resource type="PackedScene" uid="uid://d5iryuktyn53" path="res://map/elements/dirt_road.tscn" id="3_4d0js"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgq1i"]
+albedo_texture = ExtResource("1_6uw01")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1umrh"]
+material = SubResource("StandardMaterial3D_lgq1i")
+size = Vector2(3000, 3000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4d0js"]
+data = PackedVector3Array(1500, 0, 1500, -1500, 0, 1500, 1500, 0, -1500, -1500, 0, 1500, -1500, 0, -1500, 1500, 0, -1500)
+
+[node name="MapGeometry" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1umrh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4d0js")
+
+[node name="Roads" type="Node3D" parent="."]
+
+[node name="Road" parent="Roads" instance=ExtResource("2_1umrh")]
+
+[node name="Road2" parent="Roads" instance=ExtResource("2_1umrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 940, 0, 0)
+
+[node name="Road3" parent="Roads" instance=ExtResource("2_1umrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -531, 0, 0)
+
+[node name="Road5" parent="Roads" instance=ExtResource("2_1umrh")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 1500.225, -0.02, 63)
+
+[node name="Road6" parent="Roads" instance=ExtResource("2_1umrh")]
+transform = Transform3D(0.61566144, 0, 0.78801066, 0, 1, 0, -0.78801066, 0, 0.61566144, 649.385, -0.02, 738)
+
+[node name="Road4" parent="Roads" instance=ExtResource("2_1umrh")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -919.055, -0.02, 376.95)
+
+[node name="DirtRoad" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(-0.5735764, 0, -0.8191519, 0, 1, 0, 0.8191519, 0, -0.5735764, -266, -0.01, -1174)
+
+[node name="DirtRoad7" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(-0.34202024, 0, -1.4142374, 0, 1, 0, 0.9396926, 0, -0.51474047, -1169, -0.02, -577)
+
+[node name="DirtRoad6" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(-0.08715577, 0, -1.4444824, 0, 1, 0, 0.9961947, 0, -0.12637587, 470, -0.02, -1174)
+
+[node name="DirtRoad2" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -853, -0.03, 1329)
+
+[node name="DirtRoad3" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(0.56640613, 0, -0.824126, 0, 1, 0, 0.824126, 0, 0.56640613, -266, -0.03, 1403.95)
+
+[node name="DirtRoad4" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(-0.43051112, 0, -0.90258515, 0, 1, 0, 0.90258515, 0, -0.43051112, 1229.82, -0.03, -411.98)
+
+[node name="DirtRoad5" parent="Roads" instance=ExtResource("3_4d0js")]
+transform = Transform3D(0.078458995, 0, -0.9969172, 0, 1, 0, 0.9969172, 0, 0.078458995, -1232.18, -0.03, 375.02002)
