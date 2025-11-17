@@ -135,7 +135,9 @@ func mod_player_camera() -> void:
 func door_closed():
 	$Engine.volume_db = engine_inside_vol
 	Global.player_in_car = true
+	$Ui.visible = true
 
 func door_open():
 	$Engine.volume_db = engine_outside_vol
 	Global.player_in_car = false
+	$Ui.visible = false

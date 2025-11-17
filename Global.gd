@@ -9,3 +9,8 @@ var player_cam : Camera3D
 
 var player_in_car : bool
 var curr_player_location : Vector3
+
+var tornado_location : Vector3
+var tornado : Node3D
+
+var map : CanvasLayer

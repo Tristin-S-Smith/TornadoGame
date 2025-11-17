@@ -537,6 +537,7 @@ stream = ExtResource("13_iqaeg")
 autoplay = true
 
 [node name="Ui" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("12_4ffqf")
 
 [node name="Speedometer" type="Control" parent="Ui"]

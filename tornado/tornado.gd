@@ -4,8 +4,12 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+func _ready() -> void:
+	Global.tornado = self
 
 func _physics_process(delta: float) -> void:
+	Global.tornado_location = global_position
+	
 	if Global.player_in_car:
 		$Sound.volume_db = 0
 	else:

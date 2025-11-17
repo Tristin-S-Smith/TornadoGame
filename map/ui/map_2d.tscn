@@ -1,12 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://bokldgveo8cxs"]
+[gd_scene load_steps=13 format=3 uid="uid://bokldgveo8cxs"]
 
 [ext_resource type="Texture2D" uid="uid://bpblaumiiv5y6" path="res://map/ui/mapart.png" id="1_ct2qt"]
 [ext_resource type="Script" uid="uid://d365r4rxwr6o" path="res://map/ui/map_2d.gd" id="1_n6woq"]
+[ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="2_40vb8"]
 [ext_resource type="Texture2D" uid="uid://i76jrxl5afrb" path="res://map/ui/carIcon.png" id="3_xsfa2"]
 [ext_resource type="Texture2D" uid="uid://bxkuqfff1sv5l" path="res://map/ui/playerIcon.png" id="4_xsfa2"]
 
+[sub_resource type="Gradient" id="Gradient_40vb8"]
+colors = PackedColorArray(0, 0, 0, 1, 0.2520276, 0.25202766, 0.25202763, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40vb8"]
+gradient = SubResource("Gradient_40vb8")
+width = 1016
+
+[sub_resource type="Gradient" id="Gradient_xsfa2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xsfa2"]
+gradient = SubResource("Gradient_xsfa2")
+width = 1016
+
+[sub_resource type="Animation" id="Animation_86w87"]
+resource_name = "scroll"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1189, 600), Vector2(-2151, 600), Vector2(-2151, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_m6s84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1189, 568)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtclo"]
+_data = {
+&"RESET": SubResource("Animation_m6s84"),
+&"scroll": SubResource("Animation_86w87")
+}
+
 [node name="Map2D" type="CanvasLayer"]
+layer = -1
 script = ExtResource("1_n6woq")
+
+[node name="BackgroundGradient" type="Sprite2D" parent="."]
+position = Vector2(935.00006, 326.95126)
+rotation = -1.5707964
+scale = Vector2(0.6634818, 656.5)
+texture = SubResource("GradientTexture1D_40vb8")
+
+[node name="BackgroundGradient2" type="Sprite2D" parent="."]
+position = Vector2(645.1083, 326.95126)
+scale = Vector2(0.09282862, 656.5)
+texture = SubResource("GradientTexture1D_xsfa2")
+
+[node name="FlavorText" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 613.0
+offset_top = -80.0
+offset_right = 3407.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_40vb8")
+theme_override_font_sizes/font_size = 36
+text = "Local weather services have issued a high probability tornado warning for the surrounding area. Take shelter immediately."
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlavorText"]
+libraries = {
+&"": SubResource("AnimationLibrary_dtclo")
+}
+autoplay = "scroll"
+speed_scale = 0.4
 
 [node name="MapBack" type="Sprite2D" parent="."]
 position = Vector2(-1, 650)
