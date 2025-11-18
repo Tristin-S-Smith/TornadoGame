@@ -3,6 +3,8 @@ extends CanvasLayer
 var car_speed : float = 0
 @onready var car = $".."
 
+func _ready() -> void:
+	visible = false
 
 func _physics_process(delta: float) -> void:
 	car_speed = car.linear_velocity.length()
@@ -24,3 +26,7 @@ func _physics_process(delta: float) -> void:
 			$Speedometer/Tick.position.y = lerp($Speedometer/Tick.position.y, 114.0, 8 * delta)
 		car.Gears.BREAK:
 			$Speedometer/Tick.position.y = lerp($Speedometer/Tick.position.y, 137.0, 8 * delta)
+	
+	$ParkingBrake.visible = car.can_park
+	$ExitCar.visible = car.parked
+	$Obstructed.visible = car.door_obstructed and car.parked

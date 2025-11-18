@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5bqymjmjb685"]
+
+[ext_resource type="PackedScene" uid="uid://df32ygxvmyqfh" path="res://map/models/city/building.glb" id="1_fxlig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hs0x"]
+size = Vector3(26.5, 15, 26.5)
+
+[node name="Skyscraper" type="Node3D"]
+
+[node name="building" parent="." instance=ExtResource("1_fxlig")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+shape = SubResource("BoxShape3D_2hs0x")

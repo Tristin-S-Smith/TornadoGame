@@ -20,6 +20,21 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_xsfa2")
 width = 1016
 
+[sub_resource type="Animation" id="Animation_m6s84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1189, 568)]
+}
+
 [sub_resource type="Animation" id="Animation_86w87"]
 resource_name = "scroll"
 length = 10.0
@@ -35,21 +50,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1189, 600), Vector2(-2151, 600), Vector2(-2151, 600)]
-}
-
-[sub_resource type="Animation" id="Animation_m6s84"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1189, 568)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dtclo"]

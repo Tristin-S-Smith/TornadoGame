@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmsik668oku8v"]
+
+[ext_resource type="PackedScene" uid="uid://crcw2seos8bxk" path="res://map/models/city/spire.glb" id="1_7oyjn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7oyjn"]
+size = Vector3(26, 15, 26)
+
+[node name="Spire" type="Node3D"]
+
+[node name="spire" parent="." instance=ExtResource("1_7oyjn")]
+
+[node name="Cube" parent="spire" index="0"]
+transform = Transform3D(12.122, 0, 0, 0, 2, 0, 0, 0, 12.122, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_7oyjn")
+
+[editable path="spire"]

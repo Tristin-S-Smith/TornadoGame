@@ -4,6 +4,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Global.map = self
+	visible = false
 
 func convert_3d_to_map_coords(input : Vector3) -> Vector2:
 	var result_x := map_center.x + input.x * (325.0/1500.0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfwldmlsvc0ma"]
+[gd_scene load_steps=26 format=3 uid="uid://cfwldmlsvc0ma"]
 
 [ext_resource type="PackedScene" uid="uid://wgww2dsp12ra" path="res://car/carBase.glb" id="1_dxy33"]
 [ext_resource type="Script" uid="uid://c0mvjsfcrdde0" path="res://car/car.gd" id="1_jpe8o"]
@@ -24,6 +24,9 @@ size = Vector3(6.5948486, 1.2338867, 2.379486)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhmyn"]
 size = Vector3(1.2577515, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqaeg"]
+size = Vector3(1.5727539, 1.9638672, 1.0994873)
 
 [sub_resource type="Animation" id="Animation_h3fet"]
 resource_name = "EnterCar"
@@ -494,6 +497,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2241762, 0, 1.164827)
 [node name="Cube_008" parent="DoorHinge/driverWindow" index="0"]
 cast_shadow = 0
 
+[node name="CheckForCarLeave" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckForCarLeave"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28637695, 0.4819336, -1.9677174)
+shape = SubResource("BoxShape3D_iqaeg")
+
 [node name="Engine" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1848989, 0.18538529, 0)
 stream = ExtResource("5_h3fet")
@@ -537,7 +546,6 @@ stream = ExtResource("13_iqaeg")
 autoplay = true
 
 [node name="Ui" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("12_4ffqf")
 
 [node name="Speedometer" type="Control" parent="Ui"]
@@ -649,6 +657,54 @@ vertical_alignment = 1
 position = Vector2(-47, 137)
 scale = Vector2(0.4, 0.2)
 texture = ExtResource("16_xfen4")
+
+[node name="ExitCar" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -98.0
+offset_right = -331.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 36
+text = "[E] Exit Car"
+
+[node name="Obstructed" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -98.0
+offset_right = -82.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 36
+text = "OBSTRUCTED"
+
+[node name="ParkingBrake" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -49.0
+offset_right = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("15_a5fo2")
+theme_override_font_sizes/font_size = 36
+text = "[SHIFT] Parking Brake"
 
 [editable path="carBase"]
 [editable path="DoorHinge/driverWindow"]

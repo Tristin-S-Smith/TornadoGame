@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://djeuio03xn2fu"]
+
+[ext_resource type="PackedScene" uid="uid://bu61klwjg5swk" path="res://gagets/windprobe/probe.glb" id="1_aapir"]
+
+[node name="DummyProbe" type="Node3D"]
+
+[node name="probe" parent="." instance=ExtResource("1_aapir")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="Cube_001" parent="probe" index="0"]
+cast_shadow = 0
+
+[node name="Cube_002" parent="probe" index="1"]
+cast_shadow = 0
+
+[editable path="probe"]

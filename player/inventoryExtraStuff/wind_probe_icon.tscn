@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmy5mlvdb1omt"]
+
+[ext_resource type="Script" uid="uid://d0k0pqutvgfx0" path="res://player/inventoryExtraStuff/item_icon.gd" id="1_70lqg"]
+[ext_resource type="Texture2D" uid="uid://csmugb8tllj4q" path="res://player/inventoryExtraStuff/windProbeIcon.png" id="1_tlan8"]
+
+[node name="WindProbeIcon" type="Control" node_paths=PackedStringArray("bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_70lqg")
+bar = NodePath("Line2D")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_tlan8")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(14, -5)
+points = PackedVector2Array(0, 0, 43, 0)
+width = 3.0

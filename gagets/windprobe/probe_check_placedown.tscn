@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://df7ibanb1lbgs"]
+
+[ext_resource type="Script" uid="uid://txid72cbvype" path="res://gagets/windprobe/probe_check_placedown.gd" id="1_idtv1"]
+[ext_resource type="PackedScene" uid="uid://bu61klwjg5swk" path="res://gagets/windprobe/probe.glb" id="1_tm5l3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idtv1"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6827"]
+size = Vector3(0.99679565, 1.6033081, 1.0679321)
+
+[node name="ProbeCheckPlacedown" type="Node3D"]
+script = ExtResource("1_idtv1")
+
+[node name="probe" parent="." instance=ExtResource("1_tm5l3")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Cube_001" parent="probe" index="0"]
+material_override = SubResource("StandardMaterial3D_idtv1")
+transparency = 0.5
+cast_shadow = 0
+
+[node name="Cube_002" parent="probe" index="1"]
+material_override = SubResource("StandardMaterial3D_idtv1")
+transparency = 0.5
+cast_shadow = 0
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10624695, 0.80679935, 0.017913818)
+shape = SubResource("BoxShape3D_f6827")
+
+[editable path="probe"]

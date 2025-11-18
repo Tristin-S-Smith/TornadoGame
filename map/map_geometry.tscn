@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://baxkfe8w768yg"]
+[gd_scene load_steps=24 format=3 uid="uid://baxkfe8w768yg"]
 
 [ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_6uw01"]
 [ext_resource type="PackedScene" uid="uid://cpmgir6rfpj1h" path="res://map/elements/road.tscn" id="2_1umrh"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://fe3jivilsdux" path="res://map/elements/silo.tscn" id="10_o5kue"]
 [ext_resource type="Texture2D" uid="uid://bi5keer0npm3y" path="res://map/textures/foundation/Dirt_02.png" id="11_42g83"]
 [ext_resource type="PackedScene" uid="uid://cpeaox6fiqbba" path="res://map/elements/solar_panel.tscn" id="12_l6hyi"]
+[ext_resource type="PackedScene" uid="uid://c5bqymjmjb685" path="res://map/elements/skyscraper.tscn" id="13_qtx5c"]
+[ext_resource type="PackedScene" uid="uid://l6m2syxej6oe" path="res://map/elements/triangle_building.tscn" id="14_34krb"]
+[ext_resource type="PackedScene" uid="uid://cmsik668oku8v" path="res://map/elements/spire.tscn" id="15_ww0qf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgq1i"]
 albedo_texture = ExtResource("1_6uw01")
@@ -42,6 +45,9 @@ uv1_scale = Vector3(100, 100, 100)
 [sub_resource type="BoxMesh" id="BoxMesh_qtx5c"]
 material = SubResource("StandardMaterial3D_l6hyi")
 size = Vector3(200, 1, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww0qf"]
+size = Vector3(3500, 100, 5)
 
 [node name="MapGeometry" type="Node3D"]
 
@@ -262,6 +268,27 @@ transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0
 
 [node name="Windfarm22" parent="Windfarms" instance=ExtResource("6_q2ioe")]
 transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1082.3354, 0, -710.12744)
+
+[node name="Windfarm42" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.5, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.5, 893.33545, 0, 889.87256)
+
+[node name="Windfarm43" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.5, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.5, 975.33545, 0, 833.87256)
+
+[node name="Windfarm44" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.5, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.5, 997.33545, 0, 757.87256)
+
+[node name="Windfarm45" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.5, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.5, 1039.3354, 0, 695.87256)
+
+[node name="Windfarm46" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1.0000001, 1162.3354, 0, 1174.8726)
+
+[node name="Windfarm47" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1.0000001, 1194.3354, 0, 1208.8726)
+
+[node name="Windfarm48" parent="Windfarms" instance=ExtResource("6_q2ioe")]
+transform = Transform3D(-0.96592593, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, -0.96592593, 1272.3354, 0, 1187.8726)
 
 [node name="Windfarm23" parent="Windfarms" instance=ExtResource("6_q2ioe")]
 transform = Transform3D(-1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, -1.0000001, 1085.3354, 0, -579.12744)
@@ -3399,6 +3426,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1214)
 [node name="Silo2" parent="Silos" instance=ExtResource("10_o5kue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 1150)
 
+[node name="Silo20" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 924, 0, 1150)
+
+[node name="Silo21" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 917, 0, 1150)
+
+[node name="Silo22" parent="Silos" instance=ExtResource("10_o5kue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 910, 0, 1150)
+
 [node name="Silo4" parent="Silos" instance=ExtResource("10_o5kue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -541, 0, 1321)
 
@@ -3462,6 +3498,26 @@ mesh = SubResource("BoxMesh_qtx5c")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="GrassPatches"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 109, -0.385, 751)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1049, -0.385, 553)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(0.7868489, 0, -0.6171458, 0, 1, 0, 0.6171458, 0, 0.7868489, 734, -0.385, 666)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(0.7868489, 0, -0.6171458, 0, 1, 0, 0.6171458, 0, 0.7868489, 383, -0.385, 666)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(0.937428, 0, -0.3481794, 0, 1, 0, 0.3481794, 0, 0.937428, -819, -0.385, -687)
+mesh = SubResource("BoxMesh_qtx5c")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="GrassPatches"]
+transform = Transform3D(0.937428, 0, -0.3481794, 0, 1, 0, 0.3481794, 0, 0.937428, -1118, -0.385, -794)
 mesh = SubResource("BoxMesh_qtx5c")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="GrassPatches"]
@@ -3663,5 +3719,144 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963,
 [node name="SolarPanel39" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1250)
 
+[node name="SolarPanel65" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 950, 0, 1043)
+
+[node name="SolarPanel66" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 950, 0, 1026)
+
+[node name="SolarPanel67" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 950, 0, 1009)
+
+[node name="SolarPanel68" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 958, 0, 1043)
+
+[node name="SolarPanel69" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 958, 0, 1026)
+
+[node name="SolarPanel70" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 958, 0, 1009)
+
+[node name="SolarPanel71" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 1126, 0, 983)
+
+[node name="SolarPanel72" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 1126, 0, 1000)
+
+[node name="SolarPanel73" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 1126, 0, 1017)
+
+[node name="SolarPanel74" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 1064, 0, 945)
+
+[node name="SolarPanel75" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 1064, 0, 962)
+
 [node name="SolarPanel40" parent="SolarPanels" instance=ExtResource("12_l6hyi")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 963, 0, 1232)
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="Skyscraper" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1026, 0.4259863, 902.5689)
+
+[node name="Skyscraper6" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, 963, 0.4259863, 906.5689)
+
+[node name="Skyscraper2" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1091, 0.4259863, 1006.5689)
+
+[node name="Skyscraper7" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, 1026, 0.4259863, 1000.5689)
+
+[node name="Skyscraper8" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, 1088, 0.4259863, 952.5689)
+
+[node name="Skyscraper9" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, 1109, 0.4259863, 904.5689)
+
+[node name="Skyscraper5" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1155, 0.4259863, 1083.5688)
+
+[node name="Skyscraper3" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 983, 0.4259863, 1136.5688)
+
+[node name="Skyscraper4" parent="City" instance=ExtResource("13_qtx5c")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 986, 1.2480364, 1054.5688)
+
+[node name="TriangleBuilding" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 993.4485, 0.7048073, 958.67926)
+
+[node name="TriangleBuilding7" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1055.4485, 0.7048073, 988.67926)
+
+[node name="TriangleBuilding5" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1117.4485, 0.7048073, 940.67926)
+
+[node name="TriangleBuilding2" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1055.4485, 0.7048073, 1100.6792)
+
+[node name="TriangleBuilding8" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1090.4485, 0.7048073, 1046.6792)
+
+[node name="TriangleBuilding6" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1029.4485, 0.7048073, 1066.6792)
+
+[node name="TriangleBuilding3" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1154.4485, 0.7048073, 1035.6792)
+
+[node name="TriangleBuilding4" parent="City" instance=ExtResource("14_34krb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 874.4485, 0.7048073, 1005.6792)
+
+[node name="Spire" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1072, 0, 903)
+
+[node name="Spire7" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1027, 0, 943)
+
+[node name="Spire9" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 966, 0, 939)
+
+[node name="Spire2" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1097, 0, 1136)
+
+[node name="Spire3" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1119, 0, 1055)
+
+[node name="Spire8" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1154, 0, 968)
+
+[node name="Spire4" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 912, 0, 978)
+
+[node name="Spire5" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 965, 0, 1100)
+
+[node name="Spire6" parent="City" instance=ExtResource("15_ww0qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1054, 0, 1021)
+
+[node name="InvisWalls" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InvisWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisWalls/StaticBody3D"]
+shape = SubResource("BoxShape3D_ww0qf")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="InvisWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisWalls/StaticBody3D2"]
+shape = SubResource("BoxShape3D_ww0qf")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="InvisWalls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1500, 0, 6.556708e-05)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisWalls/StaticBody3D3"]
+shape = SubResource("BoxShape3D_ww0qf")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="InvisWalls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1500, 0, -6.556708e-05)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisWalls/StaticBody3D4"]
+shape = SubResource("BoxShape3D_ww0qf")

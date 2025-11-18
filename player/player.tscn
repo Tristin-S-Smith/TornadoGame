@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d12fg5cw2ptk3"]
+[gd_scene load_steps=10 format=3 uid="uid://d12fg5cw2ptk3"]
 
 [ext_resource type="Script" uid="uid://dnkrrlf6mlfdu" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cdw6r6qfnq2kf" path="res://player/ui.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://cu8at8vrtrei0" path="res://player/item_place_beam.gd" id="2_g6k8r"]
 [ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://djeuio03xn2fu" path="res://gagets/windprobe/dummy_probe.tscn" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://dsvdisbxul1iv" path="res://player/inventory.gd" id="5_qjkh3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oul6g"]
 
@@ -35,16 +38,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044688582, 0)
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 2
 
+[node name="ItemPlaceBeam" type="RayCast3D" parent="Cam/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044688582, 0)
+target_position = Vector3(0, 0, -3.5)
+script = ExtResource("2_g6k8r")
+
 [node name="ItemHold" type="Node3D" parent="Cam"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cam/ItemHold"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184, -0.105, 0.106)
+visible = false
 mesh = SubResource("BoxMesh_oul6g")
+
+[node name="DummyProbe" parent="Cam/ItemHold" instance=ExtResource("2_yw30f")]
+transform = Transform3D(0.99254614, 0.12186934, 0, -0.114151634, 0.9296903, 0.35020736, 0.042679545, -0.34759697, 0.93667215, 0.11, -0.516, -0.08)
 
 [node name="Ui" type="CanvasLayer" parent="."]
 script = ExtResource("2_g1dw6")
 
 [node name="Label" type="Label" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.5
+offset_top = -198.0
+offset_right = 115.5
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_rkbax")
+theme_override_font_sizes/font_size = 36
+text = "[E] Enter Car"
+horizontal_alignment = 1
+
+[node name="hov_ind" type="Label" parent="Ui"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -76,3 +105,20 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_rkbax")
 theme_override_font_sizes/font_size = 36
 text = "60"
+
+[node name="InventoryRow" type="HBoxContainer" parent="Ui"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -78.0
+offset_right = 292.0
+offset_bottom = -38.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 70
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("5_qjkh3")

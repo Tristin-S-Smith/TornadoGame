@@ -14,6 +14,8 @@ var player_in_car = false
 var parked := true
 var can_park := true
 
+var door_obstructed := false
+
 @onready var steering_wheel: Node3D = $steeringWheel
 
 @onready var player = preload("res://player/player.tscn")
@@ -34,6 +36,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_in_car:
+		
+		if len($CheckForCarLeave.get_overlapping_bodies()) > 0:
+			door_obstructed = true
+		else:
+			door_obstructed = false
+		
 		Global.curr_player_location = global_position
 		var axis = Input.get_axis("right", "left")
 		steering = move_toward(steering, axis * MAX_STEER, 2 * delta)
@@ -65,7 +73,7 @@ func _process(delta: float) -> void:
 			else:
 				parked = true
 		
-		if Input.is_action_just_pressed("interact") and parked:
+		if Input.is_action_just_pressed("interact") and parked and !door_obstructed:
 			exit_car()
 	else:
 		steering = move_toward(steering, 0 * MAX_STEER, 2 * delta)
