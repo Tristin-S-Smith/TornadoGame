@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://rscy5ht84ucx"]
+[gd_scene load_steps=13 format=3 uid="uid://rscy5ht84ucx"]
 
 [ext_resource type="PackedScene" uid="uid://bu61klwjg5swk" path="res://gagets/windprobe/probe.glb" id="1_cqfr6"]
 [ext_resource type="Script" uid="uid://dk42nf48vv3c3" path="res://gagets/windprobe/wind_probe.gd" id="1_or1r4"]
 [ext_resource type="Texture2D" uid="uid://bmnf5g3kd5vmw" path="res://map/ui/windProbeIcon.png" id="3_7ktna"]
 [ext_resource type="Script" uid="uid://ba5qywvc4pbxp" path="res://gagets/windprobe/circle.gd" id="4_ohfne"]
+[ext_resource type="AudioStream" uid="uid://bxv0jr3wxfqwt" path="res://gagets/windprobe/windProbePlace.wav" id="5_0yc2o"]
+[ext_resource type="AudioStream" uid="uid://ckf4nltb6u53b" path="res://gagets/windprobe/beep-beep-43875.mp3" id="6_s8hwk"]
+[ext_resource type="AudioStream" uid="uid://cprqw0ml7uwk1" path="res://gagets/windprobe/continuousServo.wav" id="7_yw3yp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_or1r4"]
 
@@ -108,5 +111,23 @@ texture = ExtResource("3_7ktna")
 
 [node name="Circle" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("4_ohfne")
+
+[node name="InitialPlace" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_0yc2o")
+unit_size = 3.0
+max_db = 0.0
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="ContinuousBeeps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_s8hwk")
+autoplay = true
+max_distance = 15.0
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="ContinuousServo" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_yw3yp")
+autoplay = true
+max_distance = 15.0
+attenuation_filter_cutoff_hz = 20500.0
 
 [editable path="probe"]

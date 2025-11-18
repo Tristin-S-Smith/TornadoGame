@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://gq7adxy7ydn4"]
+
+[ext_resource type="PackedScene" uid="uid://c6nkx8qahp8b4" path="res://gagets/flashlight/flashlight.glb" id="1_2gyec"]
+
+[node name="Flashlight" type="Node3D"]
+
+[node name="flashlight" parent="." instance=ExtResource("1_2gyec")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Cylinder" parent="flashlight" index="0"]
+cast_shadow = 0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="flashlight"]
+transform = Transform3D(-2.1855696e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855696e-07, 6.907923, 0, 0)
+light_energy = 4.0
+spot_range = 8.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="flashlight"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.5168004, 2.3381007, -0.64831376)
+light_energy = 0.5
+omni_range = 1.0
+
+[editable path="flashlight"]

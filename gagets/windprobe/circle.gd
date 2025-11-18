@@ -5,6 +5,7 @@ extends Node2D
 
 func _draw() -> void:
 	if !probe.mapped_dist : return
+	if !probe.can_track_tornado: return
 	draw_arc(probe.mapped_coords, probe.mapped_dist, 0, 360, 50, Color.BLUE, 1, true)
 	#pass
 

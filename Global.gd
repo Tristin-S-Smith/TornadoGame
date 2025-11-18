@@ -14,3 +14,5 @@ var tornado_location : Vector3
 var tornado : Node3D
 
 var map : CanvasLayer
+
+var save_player_inventory

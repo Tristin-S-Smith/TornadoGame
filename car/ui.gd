@@ -7,6 +7,9 @@ func _ready() -> void:
 	visible = false
 
 func _physics_process(delta: float) -> void:
+	if car.player_in_car:
+		visible = not Global.map.visible
+	
 	car_speed = car.linear_velocity.length()
 	$Speedometer/speedometer.value = lerp($Speedometer/speedometer.value, car_speed + 12, 5 * delta)
 	$Speedometer/speed.text = str(snapped(car_speed * 1.5, 1))
