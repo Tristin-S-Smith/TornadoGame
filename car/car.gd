@@ -127,6 +127,7 @@ func spawn_player() -> void:
 	var p = player.instantiate()
 	get_tree().get_root().add_child(p)
 	p.main_cam.current = false
+	$carBase/CamHold/Camera3D.current = true
 	p.global_position = $PlayerSpawn.global_position
 	p.global_rotation.y = main_cam.global_rotation.y
 	p.main_cam.global_position = main_cam.global_position

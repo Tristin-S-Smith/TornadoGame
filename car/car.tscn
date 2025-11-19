@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfwldmlsvc0ma"]
+[gd_scene load_steps=50 format=3 uid="uid://cfwldmlsvc0ma"]
 
 [ext_resource type="PackedScene" uid="uid://wgww2dsp12ra" path="res://car/carBase.glb" id="1_dxy33"]
 [ext_resource type="Script" uid="uid://c0mvjsfcrdde0" path="res://car/car.gd" id="1_jpe8o"]
@@ -18,6 +18,20 @@
 [ext_resource type="AudioStream" uid="uid://c36ga0fwrdoaq" path="res://car/sounds/driveLoopShort.wav" id="13_iqaeg"]
 [ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="15_a5fo2"]
 [ext_resource type="Texture2D" uid="uid://jnnvc8y1wf8l" path="res://car/ui/gearTick.png" id="16_xfen4"]
+[ext_resource type="PackedScene" uid="uid://d3fw43wdhselp" path="res://car/carTop.glb" id="19_m5x7s"]
+[ext_resource type="Script" uid="uid://dnnlttyemkhm4" path="res://car/cannon.gd" id="19_mgyrh"]
+[ext_resource type="PackedScene" uid="uid://hdewvegximvp" path="res://car/stand.glb" id="20_y6nc2"]
+[ext_resource type="PackedScene" uid="uid://kp7gg6sanien" path="res://car/cannon.glb" id="21_mgyrh"]
+[ext_resource type="Texture2D" uid="uid://dr45k5igejock" path="res://tornado/effects/blackSmoke00.png" id="22_y6nc2"]
+[ext_resource type="AudioStream" uid="uid://1o2j2lnsw3s" path="res://car/cannonSounds/servo-noises-55301(1).mp3" id="24_5qmhh"]
+[ext_resource type="AudioStream" uid="uid://k7bl16x1tby8" path="res://car/cannonSounds/hydraulics-87154.mp3" id="25_8qx7j"]
+[ext_resource type="AudioStream" uid="uid://6p0fk0atcjpn" path="res://car/cannonSounds/3-legged-robot-walker-86726.mp3" id="26_6bhiv"]
+[ext_resource type="AudioStream" uid="uid://nujqgw7krrtu" path="res://car/cannonSounds/beeps-60685.mp3" id="27_pj7mh"]
+[ext_resource type="AudioStream" uid="uid://dwdhfqkyggfeo" path="res://car/cannonSounds/mechanicalclamp-6217.mp3" id="28_0l0d2"]
+[ext_resource type="AudioStream" uid="uid://dqpvt8koqnl1a" path="res://car/cannonSounds/power-charge-6798.mp3" id="29_k2io2"]
+[ext_resource type="AudioStream" uid="uid://dku8wndxsrayp" path="res://car/cannonSounds/homemade-hydraulic-hoist-30527.mp3" id="30_qt884"]
+[ext_resource type="AudioStream" uid="uid://4a47dtvi2i2v" path="res://car/cannonSounds/air-release-47977.mp3" id="31_7ika5"]
+[ext_resource type="AudioStream" uid="uid://bnihgng4gx554" path="res://car/cannonSounds/energy-blast-and-echo-39624.mp3" id="32_4em1e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxy33"]
 size = Vector3(6.5948486, 1.2338867, 2.379486)
@@ -147,6 +161,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.5, 1.5, 3.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("carBase/CamHold/Camera3D:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wdy7j"]
@@ -280,6 +306,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [3.0, 3.0, 1.6, 0.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("carBase/CamHold/Camera3D:current")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.26666668, 0.5, 0.9666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
 
 [sub_resource type="Animation" id="Animation_bkrhx"]
 length = 0.001
@@ -367,12 +405,707 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("carBase/CamHold/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bkrhx"]
 _data = {
 &"EnterCar": SubResource("Animation_h3fet"),
 &"ExitCar": SubResource("Animation_wdy7j"),
 &"RESET": SubResource("Animation_bkrhx")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5x7s"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 25.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_y6nc2"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Curve" id="Curve_y6nc2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5077721, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mgyrh"]
+curve = SubResource("Curve_y6nc2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mgyrh"]
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_mgyrh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq770"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("22_y6nc2")
+emission_enabled = true
+emission = Color(0, 1, 0.9019608, 1)
+emission_energy_multiplier = 5.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_jitq5"]
+material = SubResource("StandardMaterial3D_bq770")
+
+[sub_resource type="Animation" id="Animation_bq770"]
+resource_name = "cannonReady"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 2.4431791),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.429, 0), Vector3(0, -1.946221, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("stand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7.266667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("stand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.7333333, 4.8, 7.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2, -1.874, 0), Vector3(-2, 2.6978095, 0), Vector3(-2, 2.6978095, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("stand/cannon/Cylinder:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.7999997, 6.5333333, 7.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(2.4035737e-07, 0, 5.4987354), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stand/cannon/Cylinder_001:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.7999997, 6.5333333, 7.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(4.152029e-07, 0, 9.498735), Vector3(2.8753823e-07, 0, 6.578108), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("stand/cannon/Cylinder_002:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.266667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("stand/cannon:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.8, 5.7999997, 9.3, 11.2),
+"transitions": PackedFloat32Array(1, 1, -2, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 4.3711385e-08, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.2617994, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("stand/cannon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.8, 5.7999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.7068083e-08, 0, -0.6192455), Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.3333334, 2, 3.0000002, 4.366667, 5.4333334, 8.200001, 8.333333, 9.333333),
+"transitions": PackedFloat32Array(1, 1, -2, 1, -2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(3, 2, 0), Vector3(0, 3, 0), Vector3(-0.22763729, 2.797656, 0), Vector3(1.391098, 0.84979415, -2.5880136), Vector3(1.391098, 0.84979415, -2.5880136), Vector3(-1.1309497, 2.7652736, -2.5880136), Vector3(0.5756488, 2.7652736, -2.8856153), Vector3(0.5756488, 2.7652736, -2.8856153), Vector3(-3.5690815, 3.0278192, -2.3403928)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.3333334, 2, 3.0000002, 4.366667, 5.4333334, 7.9666667, 8.200001, 9.333334),
+"transitions": PackedFloat32Array(1, 1, -2, 1, -2, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector3(-0.78539824, 1.5707964, -4.3711385e-08), Vector3(-0.78539824, 1.5707964, -4.3711385e-08), Vector3(-0.88987374, 1.5707964, -5.0952668e-08), Vector3(0.5438096, 2.2518587, -3.52075e-10), Vector3(0.54380965, 2.2518587, -3.5207393e-10), Vector3(0.1308997, 3.1415927, 0), Vector3(0.1308997, 3.6564648, 0), Vector3(0.1308997, 3.6564648, 0), Vector3(0.1308997, 4.3598323, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("stand/cannon/BeamBall:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(7.966667, 8.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("stand/cannon/BeamBall:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(8.066668, 8.200001, 8.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.3834204e-07, 0, -14.603561), Vector3(-6.5137647e-07, 0, -14.901754), Vector3(-6.744582e-07, 0, -15.429804)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("stand/cannon/OmniLight3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(7.966667, 8.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("stand/cannon/OmniLight3D:light_size")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(8.033334, 9.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 10.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("stand/cannon/BeamBall:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.933334, 7.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Ui/Bars/ColorRect:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Ui/Bars/ColorRect2:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 648), Vector2(0, 601)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("stand/cannon/BeamBall/GPUParticles3D:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(8.033334, 8.066668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Camera3D:current")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "audio"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AudioStreamPlayer")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"clips": [{
+"end_offset": 65.85117,
+"start_offset": 12.942361,
+"stream": ExtResource("24_5qmhh")
+}, {
+"end_offset": 0.034455262,
+"start_offset": 7.71609,
+"stream": ExtResource("25_8qx7j")
+}, {
+"end_offset": 4.7081113,
+"start_offset": 4.9105663,
+"stream": ExtResource("26_6bhiv")
+}, {
+"end_offset": 9.143945,
+"start_offset": 0.0,
+"stream": ExtResource("26_6bhiv")
+}],
+"times": PackedFloat32Array(1.2333333, 4.733333, 6.266667, 8.566667)
+}
+tracks/19/use_blend = true
+tracks/20/type = "audio"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("AudioStreamPlayer2")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"clips": [{
+"end_offset": 12.123492,
+"start_offset": 1.9947847,
+"stream": ExtResource("27_pj7mh")
+}, {
+"end_offset": 0.22190762,
+"start_offset": 0.7937461,
+"stream": ExtResource("28_0l0d2")
+}],
+"times": PackedFloat32Array(0.03333333, 5.793746)
+}
+tracks/20/use_blend = true
+tracks/21/type = "audio"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AudioStreamPlayer3")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 7.802665,
+"stream": ExtResource("29_k2io2")
+}],
+"times": PackedFloat32Array(7.7)
+}
+tracks/21/use_blend = true
+tracks/22/type = "audio"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("AudioStreamPlayer4")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"clips": [{
+"end_offset": 16.988089,
+"start_offset": 1.4675894,
+"stream": ExtResource("30_qt884")
+}, {
+"end_offset": 3.2714224,
+"start_offset": 0.036603034,
+"stream": ExtResource("31_7ika5")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.23231576,
+"stream": ExtResource("32_4em1e")
+}],
+"times": PackedFloat32Array(2.5235455, 4.730064, 7.7343507)
+}
+tracks/22/use_blend = true
+tracks/23/type = "audio"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AudioStreamPlayer5")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 13.939673,
+"stream": ExtResource("27_pj7mh")
+}],
+"times": PackedFloat32Array(7.2)
+}
+tracks/23/use_blend = true
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 4.2333336, 4.4333334, 6.2333336, 6.266667, 8.033334, 8.133334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.0, 3.0, -5.0, -5.0, 0.0, 0.0, 12.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("AudioStreamPlayer2:volume_db")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(2.7466125, 7.3, 7.3333335),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [0.0, 0.0, -5.0]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("AudioStreamPlayer5:volume_db")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(6.8333335, 7.2000003),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.0]
+}
+
+[sub_resource type="Animation" id="Animation_jitq5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.429, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("stand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("stand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2, 2.6978095, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("stand/cannon/Cylinder:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stand/cannon/Cylinder_001:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("stand/cannon/Cylinder_002:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("stand/cannon:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("stand/cannon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 2, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.78539824, 1.5707964, -4.3711385e-08)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("stand/cannon/BeamBall:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("stand/cannon/BeamBall:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.744582e-07, 0, -15.429804)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("stand/cannon/OmniLight3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("stand/cannon/OmniLight3D:light_size")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("stand/cannon/BeamBall:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Ui/Bars/ColorRect:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39, -211)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Ui/Bars/ColorRect2:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39, 746)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("stand/cannon/BeamBall/GPUParticles3D:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Camera3D:current")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("AudioStreamPlayer2:volume_db")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AudioStreamPlayer5:volume_db")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hroyx"]
+_data = {
+&"RESET": SubResource("Animation_jitq5"),
+&"cannonReady": SubResource("Animation_bq770")
 }
 
 [node name="Car" type="VehicleBody3D" groups=["car"]]
@@ -706,7 +1439,74 @@ theme_override_fonts/font = ExtResource("15_a5fo2")
 theme_override_font_sizes/font_size = 36
 text = "[SHIFT] Parking Brake"
 
+[node name="Bars" type="Node2D" parent="Ui"]
+
+[node name="ColorRect" type="ColorRect" parent="Ui/Bars"]
+offset_left = 39.0
+offset_top = -211.0
+offset_right = 1262.0
+offset_bottom = -171.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Ui/Bars"]
+offset_left = 39.0
+offset_top = 746.0
+offset_right = 1262.0
+offset_bottom = 792.68
+color = Color(0, 0, 0, 1)
+
+[node name="Cannon" type="Node3D" parent="."]
+script = ExtResource("19_mgyrh")
+
+[node name="carTop" parent="Cannon" instance=ExtResource("19_m5x7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.429, 0)
+
+[node name="stand" parent="Cannon" instance=ExtResource("20_y6nc2")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2, 2.6978095, 0)
+
+[node name="cannon" parent="Cannon/stand" instance=ExtResource("21_mgyrh")]
+
+[node name="BeamBall" type="MeshInstance3D" parent="Cannon/stand/cannon"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -6.744582e-07, 0, -15.429804)
+material_override = SubResource("StandardMaterial3D_m5x7s")
+mesh = SubResource("SphereMesh_y6nc2")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Cannon/stand/cannon/BeamBall"]
+emitting = false
+amount = 20
+lifetime = 0.3
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_mgyrh")
+draw_pass_1 = SubResource("QuadMesh_jitq5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Cannon/stand/cannon"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.504281e-07, 0.085160255, -14.88006)
+visible = false
+light_color = Color(0, 1, 1, 1)
+light_energy = 5.0
+omni_range = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cannon"]
+libraries = {
+&"": SubResource("AnimationLibrary_hroyx")
+}
+autoplay = "RESET"
+
+[node name="Camera3D" type="Camera3D" parent="Cannon"]
+transform = Transform3D(-1.2802769e-08, -0.7071068, 0.7071067, -3.0908613e-08, 0.7071067, 0.7071068, -1, -1.2802765e-08, -3.0908616e-08, 3, 2, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cannon"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Cannon"]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Cannon"]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Cannon"]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Cannon"]
+
 [editable path="carBase"]
 [editable path="DoorHinge/driverWindow"]
 [editable path="windshield"]
 [editable path="windowPassenger"]
+[editable path="Cannon/stand/cannon"]

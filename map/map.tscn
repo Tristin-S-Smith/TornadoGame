@@ -100,7 +100,7 @@ mesh = SubResource("BoxMesh_kxmgb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 893, 4.851625, 910)
 
 [node name="Car" parent="." instance=ExtResource("4_lgq1i")]
-transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 903, 2.8820696, 920.4776)
+transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 896, 2.8820696, 904.4776)
 
 [node name="Tornado" parent="." instance=ExtResource("6_7lyie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 594, 0, 44)
