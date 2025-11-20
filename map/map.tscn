@@ -1,16 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl3losxm3rp87"]
+[gd_scene load_steps=17 format=3 uid="uid://bl3losxm3rp87"]
 
 [ext_resource type="AudioStream" uid="uid://bxg51wcrktbdw" path="res://music/ruskerdax_were_lost_cut.wav" id="1_5jdw0"]
-[ext_resource type="Texture2D" uid="uid://breyyklk5lj6j" path="res://map/textures/foundation/grass01.jpg" id="1_a0dt8"]
 [ext_resource type="Shader" uid="uid://cfvtm02i3vk48" path="res://map/sky.gdshader" id="1_kffv2"]
-[ext_resource type="Texture2D" uid="uid://tf64kwmlehbi" path="res://map/textures/foundation/asphalt_road_3.jpg" id="2_4hjbm"]
+[ext_resource type="Script" uid="uid://dsynpiam3lg7p" path="res://map/music.gd" id="2_k8tny"]
 [ext_resource type="PackedScene" uid="uid://d12fg5cw2ptk3" path="res://player/player.tscn" id="3_4hjbm"]
+[ext_resource type="AudioStream" uid="uid://73q1geb8dtd8" path="res://music/jrpg_battle_loop.mp3" id="3_ap8vc"]
 [ext_resource type="PackedScene" uid="uid://cfwldmlsvc0ma" path="res://car/car.tscn" id="4_lgq1i"]
 [ext_resource type="PackedScene" uid="uid://cpfypc8t6nrbw" path="res://tornado/tornado.tscn" id="6_7lyie"]
 [ext_resource type="PackedScene" uid="uid://baxkfe8w768yg" path="res://map/map_geometry.tscn" id="8_kxmgb"]
 [ext_resource type="PackedScene" uid="uid://bokldgveo8cxs" path="res://map/ui/map_2d.tscn" id="9_e8e5r"]
-[ext_resource type="PackedScene" uid="uid://rscy5ht84ucx" path="res://gagets/windprobe/wind_probe.tscn" id="10_112ik"]
-[ext_resource type="PackedScene" uid="uid://df7ibanb1lbgs" path="res://gagets/windprobe/probe_check_placedown.tscn" id="11_i5grx"]
+[ext_resource type="Script" uid="uid://bcd87amr0v87j" path="res://map/city_marker.gd" id="14_ap8vc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kffv2"]
 
@@ -47,31 +46,20 @@ fog_density = 1.6483
 volumetric_fog_enabled = true
 volumetric_fog_emission = Color(0.28118682, 0.28118688, 0.28118682, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8e5r"]
-albedo_texture = ExtResource("1_a0dt8")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kffv2"]
-material = SubResource("StandardMaterial3D_e8e5r")
-size = Vector2(3000, 3000)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lgq1i"]
-data = PackedVector3Array(1500, 0, 1500, -1500, 0, 1500, 1500, 0, -1500, -1500, 0, 1500, -1500, 0, -1500, 1500, 0, -1500)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jdw0"]
-albedo_texture = ExtResource("2_4hjbm")
-uv1_scale = Vector3(0.38, 0.38, 0.38)
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_kxmgb"]
-size = Vector3(10, 1, 3000)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ap8vc"]
+height = 100.0
+radius = 150.0
 
 [node name="Map" type="Node3D"]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_5jdw0")
 autoplay = true
+script = ExtResource("2_k8tny")
+
+[node name="FinalMusic" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_ap8vc")
+volume_db = -13.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kxmgb")
@@ -81,42 +69,25 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 light_energy = 0.01
 shadow_enabled = true
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("PlaneMesh_kffv2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_lgq1i")
-
-[node name="Road" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43281007, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_5jdw0")
-mesh = SubResource("BoxMesh_kxmgb")
-
 [node name="Player" parent="." instance=ExtResource("3_4hjbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 893, 4.851625, 910)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1071, 4.851625, 988)
 
 [node name="Car" parent="." instance=ExtResource("4_lgq1i")]
-transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 896, 2.8820696, 904.4776)
+transform = Transform3D(5.9604645e-08, 0, 1, 0, 1, 0, -1, 0, 5.9604645e-08, 1075, 2.8820696, 982.4776)
 
 [node name="Tornado" parent="." instance=ExtResource("6_7lyie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 594, 0, 44)
 
 [node name="MapGeometry" parent="." instance=ExtResource("8_kxmgb")]
 
 [node name="Map2D" parent="." instance=ExtResource("9_e8e5r")]
 
-[node name="WindProbe" parent="." instance=ExtResource("10_112ik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
+[node name="CityMarker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1023, 0, 1001)
+script = ExtResource("14_ap8vc")
 
-[node name="ProbeCheckPlacedown" parent="." instance=ExtResource("11_i5grx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1)
+[node name="Area3D" type="Area3D" parent="CityMarker"]
+collision_layer = 4
+collision_mask = 4
 
-[node name="ProbeCheckPlacedown2" parent="." instance=ExtResource("11_i5grx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.28525132, -3)
-
-[node name="ProbeCheckPlacedown3" parent="." instance=ExtResource("11_i5grx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.28525132, -3)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CityMarker/Area3D"]
+shape = SubResource("CylinderShape3D_ap8vc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d12fg5cw2ptk3"]
+[gd_scene load_steps=13 format=3 uid="uid://d12fg5cw2ptk3"]
 
 [ext_resource type="Script" uid="uid://dnkrrlf6mlfdu" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cdw6r6qfnq2kf" path="res://player/ui.gd" id="2_g1dw6"]
@@ -16,6 +16,10 @@ height = 2.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_oul6g"]
 size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rgyib"]
+height = 10.0
+radius = 10.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_oul6g")
@@ -96,6 +100,7 @@ text = "[E] Place Wind Probe"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Ui"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -132,3 +137,10 @@ script = ExtResource("5_qjkh3")
 stream = ExtResource("8_rgyib")
 volume_db = -6.0
 max_polyphony = 10
+
+[node name="TornadoCheck" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TornadoCheck"]
+shape = SubResource("CylinderShape3D_rgyib")

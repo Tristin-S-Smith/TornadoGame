@@ -36,6 +36,11 @@ func _ready():
 	Global.player = self
 
 func _physics_process(delta: float) -> void:
+	
+	if $TornadoCheck.has_overlapping_bodies():
+		if !Global.tornado.end_processed:
+			Global.tornado.determine_act_after_lazer(false)
+	
 	move_cam_to_hold(delta)
 	Global.curr_player_location = global_position
 	

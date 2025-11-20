@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var map_center: Vector2 = $MapCenter.global_position
 
+var end_cutscene : bool = false
+
 func _ready() -> void:
 	Global.map = self
 	visible = false
@@ -14,15 +16,25 @@ func convert_3d_to_map_coords(input : Vector3) -> Vector2:
 
 func _physics_process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("Map"):
+	if end_cutscene:
+		visible = false
+		return
+	
+	if Input.is_action_just_pressed("Map") and !Global.car.cannon_fire_pressed:
 		visible = not visible
+	
+	if visible and Global.car and Global.car.cannon_fire_pressed:
+		visible = false
+	
 	
 	if not visible:
 		return
 	
-	
-	var car_mapped_coords = convert_3d_to_map_coords(Global.car.global_position)
-	$CarIcon.global_position = car_mapped_coords
+	if Global.car:
+		var car_mapped_coords = convert_3d_to_map_coords(Global.car.global_position)
+		$CarIcon.global_position = car_mapped_coords
+	else:
+		$CarIcon.visible = false
 	
 	if Global.player:
 		$PlayerIcon.visible = true

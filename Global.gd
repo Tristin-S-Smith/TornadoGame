@@ -16,3 +16,7 @@ var tornado : Node3D
 var map : CanvasLayer
 
 var save_player_inventory
+
+var music
+
+var city_marker

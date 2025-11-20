@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 		car.Gears.BREAK:
 			$Speedometer/Tick.position.y = lerp($Speedometer/Tick.position.y, 137.0, 8 * delta)
 	
-	$ParkingBrake.visible = car.can_park
-	$ExitCar.visible = car.parked
-	$Obstructed.visible = car.door_obstructed and car.parked
+	$ParkingBrake.visible = car.can_park if !car.cannon_fire_pressed else false
+	$ExitCar.visible = car.parked if !car.cannon_fire_pressed else false
+	$Cannon.visible = car.parked if !car.cannon_fire_pressed else false
+	$Obstructed.visible = car.door_obstructed and car.parked and !car.cannon_fire_pressed

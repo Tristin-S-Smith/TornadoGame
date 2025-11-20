@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bokldgveo8cxs"]
+[gd_scene load_steps=14 format=3 uid="uid://bokldgveo8cxs"]
 
 [ext_resource type="Texture2D" uid="uid://bpblaumiiv5y6" path="res://map/ui/mapart.png" id="1_ct2qt"]
 [ext_resource type="Script" uid="uid://d365r4rxwr6o" path="res://map/ui/map_2d.gd" id="1_n6woq"]
 [ext_resource type="FontFile" uid="uid://x1i6uqy2mlha" path="res://fonts/Tienne/Tienne-Regular.ttf" id="2_40vb8"]
 [ext_resource type="Texture2D" uid="uid://i76jrxl5afrb" path="res://map/ui/carIcon.png" id="3_xsfa2"]
 [ext_resource type="Texture2D" uid="uid://bxkuqfff1sv5l" path="res://map/ui/playerIcon.png" id="4_xsfa2"]
+[ext_resource type="Texture2D" uid="uid://dvrv5pwwghlxk" path="res://map/ui/compass.png" id="6_86w87"]
 
 [sub_resource type="Gradient" id="Gradient_40vb8"]
 colors = PackedColorArray(0, 0, 0, 1, 0.2520276, 0.25202766, 0.25202763, 1)
@@ -115,3 +116,8 @@ texture = ExtResource("3_xsfa2")
 [node name="PlayerIcon" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_xsfa2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(904, 222)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_86w87")

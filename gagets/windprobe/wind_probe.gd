@@ -6,7 +6,7 @@ var mapped_dist
 
 var can_track_tornado := false
 
-const MAX_DETECT_DIST : float = 700.0
+const MAX_DETECT_DIST : float = 850.0
 
 func _ready() -> void:
 	$InitialPlace.play()

@@ -15,6 +15,7 @@ var parked := true
 var can_park := true
 
 var door_obstructed := false
+var cannon_fire_pressed := false
 
 @onready var steering_wheel: Node3D = $steeringWheel
 
@@ -35,7 +36,28 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if cannon_fire_pressed: return
 	if player_in_car:
+		
+		if $TornadoCheck.has_overlapping_bodies():
+			if !Global.tornado.end_processed:
+				Global.tornado.determine_act_after_lazer(false)
+		
+		if Input.is_action_just_pressed("hypercannon") and parked:
+			Global.tornado.can_move = false
+			$Cannon.activate()
+			$windshield/Cube_003.transparency = 0.0
+			$DoorHinge/driverWindow/Cube_008.transparency = 0.0
+			
+			for child in $Ui.get_children():
+				child.visible = false
+				print(str(child) + " made invisible")
+			$Ui/Bars.visible = true
+			
+			$carBase/InteriorLight.visible = false
+			$Cannon.visible = true
+			cannon_fire_pressed = true
+			return
 		
 		if len($CheckForCarLeave.get_overlapping_bodies()) > 0:
 			door_obstructed = true

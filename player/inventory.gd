@@ -16,7 +16,7 @@ var current_item : Item
 @onready var inventory_row: HBoxContainer = $"../Ui/InventoryRow"
 
 
-var initial_inventory = [Item.FLASHLIGHT, Item.WIND_PROBE, Item.WIND_PROBE, Item.WIND_PROBE]
+var initial_inventory = [Item.FLASHLIGHT, Item.WIND_PROBE, Item.WIND_PROBE, Item.WIND_PROBE, Item.WIND_PROBE]
 
 func _ready() -> void:
 	
