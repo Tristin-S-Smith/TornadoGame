@@ -43,7 +43,6 @@ sky = SubResource("Sky_5jdw0")
 fog_light_color = Color(0, 0, 0, 1)
 fog_sun_scatter = 31.2
 fog_density = 1.6483
-volumetric_fog_enabled = true
 volumetric_fog_emission = Color(0.28118682, 0.28118688, 0.28118682, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ap8vc"]

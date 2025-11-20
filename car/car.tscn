@@ -1637,7 +1637,7 @@ autoplay = "RESET"
 
 [node name="Camera3D" type="Camera3D" parent="Cannon"]
 transform = Transform3D(-1.2802769e-08, -0.7071068, 0.7071067, -3.0908613e-08, 0.7071067, 0.7071068, -1, -1.2802765e-08, -3.0908616e-08, 3, 2, 0)
-far = 200.0
+far = 150.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Cannon/Camera3D"]
 light_energy = 2.0
